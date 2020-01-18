@@ -16,5 +16,5 @@ def fileparser(filename):
     return df , c
 
 
-table , number = fileparser("symmetric10nodesexample.txt")
-print(table,number)
+#table , number = fileparser("symmetric10nodesexample.txt")
+#print(table,number)
