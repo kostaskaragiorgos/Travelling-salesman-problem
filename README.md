@@ -43,3 +43,10 @@ Creates a random problem and saves it to a .txt file
 **Current Version**
 
 <p><img src ="tsp generator.png" title = "TSP Generator Version"/> </p>
+
+
+# TSP SOLVER
+
+**Current Version**
+
+<p><img src ="tspsolver.png" title = "TSP Solver Version"/> </p>
