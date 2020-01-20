@@ -1,6 +1,6 @@
 # swap 
 from random import randint
-from nearsetneighbor import *
+from nearestneighbor import *
 import numpy as np
 
 #table , number = fileparser("symmetric10nodesexample.txt")

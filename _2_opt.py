@@ -1,5 +1,5 @@
 from random import randint
-from nearsetneighbor import *
+from nearestneighbor import *
 import numpy as np
 
 def partial_reverse(list_, from_, to):
