@@ -1,6 +1,5 @@
 File menu
 ================
-Generate Alt + O
 Exit Alt + F4
 =============
 About menu
