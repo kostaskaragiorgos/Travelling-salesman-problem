@@ -13,6 +13,7 @@ Given a list of nodes you need to find the best way to visit every node only onc
     <li> nearestneighbor.py(nearest neigbor methods ) </li>
     <li> fileparser.py (.txt file parser) </li>
     <li> 2-opt.py (2 opt methdos) </li>
+    <li> tsp generator.png(version file) </li>
 </ul>
 
 # TSP GENERATOR 
