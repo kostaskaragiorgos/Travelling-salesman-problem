@@ -10,10 +10,11 @@ Given a list of nodes you need to find the best way to visit every node only onc
     <li> asymmetric10nodesexample.txt (asymmetric example) </li>
     <li> swap.py (swap methods) </li>
     <li> relocate.py(relocate methods) </li>
-    <li> nearestneighbor.py(nearest neigbor methods ) </li>
+    <li> nearestneighbor.py(nearest neighbor methods ) </li>
     <li> fileparser.py (.txt file parser) </li>
     <li> 2-opt.py (2 opt methdos) </li>
     <li> tsp generator.png(version file) </li>
+    <li> tspsolver.py(nearest neighbor gui) </li>
 </ul>
 
 # TSP GENERATOR 
