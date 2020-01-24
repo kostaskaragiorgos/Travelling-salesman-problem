@@ -47,6 +47,35 @@ Creates a random problem and saves it to a .txt file
 
 # TSP SOLVER
 
+
+## Dependencies
+
+ <ul>
+  <li> Numpy (conda install -c anaconda numpy) </li>
+  <li> second way to install numpy( pip install numpy) </li>
+  <li> Pandas (conda install -c anaconda pandas) </li>
+  <li> second way to install pandas ( pip install pandas) </li>
+</ul>
+
+
 **Current Version**
 
 <p><img src ="tspsolver.png" title = "TSP Solver Version"/> </p>
+
+
+# TSP SOLVER 2
+
+## Dependencies
+
+ <ul>
+  <li> Numpy (conda install -c anaconda numpy) </li>
+  <li> second way to install numpy( pip install numpy) </li>
+  <li> Pandas (conda install -c anaconda pandas) </li>
+  <li> second way to install pandas ( pip install pandas) </li>
+</ul>
+
+
+
+**Current Version**
+
+<p><img src ="TSP SOLVER 2.png" title = "TSP Solver 2 Version"/> </p>
