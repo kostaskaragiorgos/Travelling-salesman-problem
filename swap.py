@@ -3,8 +3,8 @@ from random import randint
 from nearestneighbor import *
 import numpy as np
 
-#table , number = fileparser("symmetric10nodesexample.txt")
-#table = np.array(table)
+table , number = fileparser("symmetric10nodesexample.txt")
+table = np.array(table)
 
 def swapPositions(list, pos1, pos2): 
       
@@ -12,7 +12,7 @@ def swapPositions(list, pos1, pos2):
     return list
 
 
-def swap(visited_nodes,totalscore, tries):
+def swap(visited_nodes,totalscore, tries ):
     stop_counter = 0
     current_route = visited_nodes
     current_score = totalscore
@@ -32,5 +32,5 @@ def swap(visited_nodes,totalscore, tries):
 
 
 
-#current_route , current_score = swap(visited_nodes,totalscore,10000) 
-#print("after the usage of swap the best route is :" +str(current_route)+ "with score :"+str(current_score))
+current_route , current_score = swap(visited_nodes,totalscore,10000) 
+print("after the usage of swap the best route is :" +str(current_route)+ "with score :"+str(current_score))

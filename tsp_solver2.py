@@ -2,9 +2,8 @@ from tkinter import *
 from tkinter import messagebox as msg
 from tkinter import filedialog
 from nearestneighbor import *
-from _2_opt import *
+from _2_opt import partial_reverse, _2optf
 from relocate import *
-from swap import *
 import pandas as pd 
 import numpy as np
 class TSP_SOLVER2 ():
@@ -41,7 +40,7 @@ class TSP_SOLVER2 ():
         self.binsert = Button(self.master,text = "Insert a file",command = self.insertfile)
         self.binsert.pack()
 
-        setslist = list(["2-opt","Relocate", "Swap"])
+        setslist = list(["2-opt","Relocate"])
         self.varnumset = StringVar(master)
         self.varnumset.set(setslist[0])
         self.popupsetmenu = OptionMenu(self.master,self.varnumset,*setslist)
@@ -78,7 +77,14 @@ class TSP_SOLVER2 ():
     def solve(self):
         
         visited_nodes, totalscore = nearserN(self.table,self.number) 
-        #msg.showinfo("SUCCESS", "THE ROUTE USING NEAREST NEIGHBOR"+str(visited_nodes)+"with score:"+str(totalscore))
+        if self.varnumset.get() == "2-opt":
+            current_route , current_score  = _2optf(visited_nodes , totalscore , 10000,self.table,self.number)
+            msg.showinfo("SUCCESS", "THE ROUTE USING 2-OPT:"+str(current_route)+"WITH SCORE:"+str(current_score))
+        elif self.varnumset.get() == "Relocate":
+            current_route , current_score  =relocatef(visited_nodes , totalscore , 1000,self.table,self.number)
+            msg.showinfo("SUCCESS", "THE ROUTE USING RELOCATE :"+str(current_route)+"WITH SCORE:"+str(current_score))
+        
+        # TODO
 
         
     
