@@ -3,6 +3,7 @@ from tkinter import messagebox as msg
 from tkinter import filedialog
 from nearestneighbor import *
 from _2_opt import partial_reverse, _2optf
+from swap import swap ,swapPositions
 from relocate import *
 import pandas as pd 
 import numpy as np
@@ -40,7 +41,7 @@ class TSP_SOLVER2 ():
         self.binsert = Button(self.master,text = "Insert a file",command = self.insertfile)
         self.binsert.pack()
 
-        setslist = list(["2-opt","Relocate"])
+        setslist = list(["2-opt","Relocate","Swap"])
         self.varnumset = StringVar(master)
         self.varnumset.set(setslist[0])
         self.popupsetmenu = OptionMenu(self.master,self.varnumset,*setslist)
@@ -83,11 +84,11 @@ class TSP_SOLVER2 ():
         elif self.varnumset.get() == "Relocate":
             current_route , current_score  =relocatef(visited_nodes , totalscore , 1000,self.table,self.number)
             msg.showinfo("SUCCESS", "THE ROUTE USING RELOCATE :"+str(current_route)+"WITH SCORE:"+str(current_score))
+        else:
+            current_route , current_score  =swap(visited_nodes , totalscore , 1000,self.table,self.number)
+            msg.showinfo("SUCCESS", "THE ROUTE USING SWAP :"+str(current_route)+"WITH SCORE:"+str(current_score))
         
-        # TODO
 
-        
-    
 def main():
     root=Tk()
     TSP_S = TSP_SOLVER2(root)
