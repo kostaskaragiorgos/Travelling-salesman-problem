@@ -96,12 +96,15 @@ class TSP_GENERATOR ():
                 
                         
             filenamesave =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = (("txt files","*.txt"),("all files","*.*")))
-            with open(filenamesave, 'w') as f:
-                for i in range(len(a)):
-                    for j in range(len(a)):
-                        f.write(str(a[i][j])+" ")
-                    f.write("\n")
-            msg.showinfo("Success", "Success")
+            if "*.csv" in filenamesave:
+                with open(filenamesave, 'w') as f:
+                    for i in range(len(a)):
+                        for j in range(len(a)):
+                            f.write(str(a[i][j])+" ")
+                        f.write("\n")
+                msg.showinfo("Success", "Success")
+            else:
+                msg.showerror("Abort" , "Abort")
 
     def helpmenu(self):
         msg.showinfo("HELP","ENTER THE NUMBER OF NODES PICK ONE OF THE WAYS TO CREATE THE NODES AND PRESS GENERATE")
