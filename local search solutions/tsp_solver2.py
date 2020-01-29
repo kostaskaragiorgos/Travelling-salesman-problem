@@ -12,8 +12,9 @@ class TSP_SOLVER2 ():
     def __init__(self,master):
         self.master = master
         self.master.title("TSP_SOLVER 2")
-        self.master.geometry("250x120")
+        self.master.geometry("250x130")
         self.master.resizable(False,False)
+        self.filed = ""
         
         self.menu = Menu(self.master)
         
@@ -47,6 +48,11 @@ class TSP_SOLVER2 ():
         self.popupsetmenu = OptionMenu(self.master,self.varnumset,*setslist)
         self.popupsetmenu.pack()
         
+        self.lb = Label(self.master,text = "TRIES")
+        self.lb.pack()
+
+        self.textt = Text(self.master , height = 1)
+        self.textt.pack()
 
         self.solvb = Button(self.master,text = "Solve",command = self.solve)
         self.solvb.pack()
@@ -76,17 +82,32 @@ class TSP_SOLVER2 ():
 
 
     def solve(self):
-        
-        visited_nodes, totalscore = nearserN(self.table,self.number) 
-        if self.varnumset.get() == "2-opt":
-            current_route , current_score  = _2optf(visited_nodes , totalscore , 10000,self.table,self.number)
-            msg.showinfo("SUCCESS", "THE ROUTE USING 2-OPT:"+str(current_route)+"WITH SCORE:"+str(current_score))
-        elif self.varnumset.get() == "Relocate":
-            current_route , current_score  =relocatef(visited_nodes , totalscore , 1000,self.table,self.number)
-            msg.showinfo("SUCCESS", "THE ROUTE USING RELOCATE :"+str(current_route)+"WITH SCORE:"+str(current_score))
+        if self.filed  == "":
+            msg.showinfo("Import", "You need to import a .txt file")
         else:
-            current_route , current_score  =swap(visited_nodes , totalscore , 1000,self.table,self.number)
-            msg.showinfo("SUCCESS", "THE ROUTE USING SWAP :"+str(current_route)+"WITH SCORE:"+str(current_score))
+            visited_nodes, totalscore = nearserN(self.table,self.number) 
+            try:
+                if int(self.textt.get(1.0,END)) > 0:
+                    tries = int(self.textt.get(1.0,END))
+
+                    if self.varnumset.get() == "2-opt":
+                        current_route , current_score  = _2optf(visited_nodes , totalscore , tries,self.table,self.number)
+                        msg.showinfo("SUCCESS", "THE ROUTE USING 2-OPT:"+str(current_route)+"WITH SCORE:"+str(current_score))
+                    elif self.varnumset.get() == "Relocate":
+                        current_route , current_score  =relocatef(visited_nodes , totalscore , tries,self.table,self.number)
+                        msg.showinfo("SUCCESS", "THE ROUTE USING RELOCATE :"+str(current_route)+"WITH SCORE:"+str(current_score))
+                    else:
+                        current_route , current_score  =swap(visited_nodes , totalscore , tries,self.table,self.number)
+                        msg.showinfo("SUCCESS", "THE ROUTE USING SWAP :"+str(current_route)+"WITH SCORE:"+str(current_score))
+
+                else:
+                    msg.showerror("Value Error", "Enter a number higher than zero")
+                    self.textt.delete(0,END)
+            except:
+                msg.showerror("Value Error", "Enter a number higher than zero")
+                self.textt.delete(1.0,END)
+
+
         
 
 def main():
