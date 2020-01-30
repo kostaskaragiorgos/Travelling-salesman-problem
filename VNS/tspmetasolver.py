@@ -2,9 +2,9 @@ from tkinter import *
 from tkinter import messagebox as msg
 from tkinter import filedialog
 from nearestneighbor import *
-#from _2_opt import partial_reverse, _2optf
-#from swap import swap ,swapPositions
-#from relocate import *
+from _2_opt import partial_reverse, _2optf
+from basicvn import bvns
+from relocate import *
 import pandas as pd 
 import numpy as np
 class TSP_META_SOLVER ():
@@ -82,31 +82,16 @@ class TSP_META_SOLVER ():
             msg.showinfo("Import", "You need to import a .txt file")
         else:
             visited_nodes, totalscore = nearserN(self.table,self.number) 
-            msg.showinfo("SUCCESS", "THE ROUTE USING 2-OPT:"+str(visited_nodes)+"WITH SCORE:"+str(totalscore))
-            """
-            try:
-                if int(self.textt.get(1.0,END)) > 0:
-                    tries = int(self.textt.get(1.0,END))
-
-                    if self.varnumset.get() == "2-opt":
-                        current_route , current_score  = _2optf(visited_nodes , totalscore , tries,self.table,self.number)
-                        msg.showinfo("SUCCESS", "THE ROUTE USING 2-OPT:"+str(current_route)+"WITH SCORE:"+str(current_score))
-                    elif self.varnumset.get() == "Relocate":
-                        current_route , current_score  =relocatef(visited_nodes , totalscore , tries,self.table,self.number)
-                        msg.showinfo("SUCCESS", "THE ROUTE USING RELOCATE :"+str(current_route)+"WITH SCORE:"+str(current_score))
-                    else:
-                        current_route , current_score  =swap(visited_nodes , totalscore , tries,self.table,self.number)
-                        msg.showinfo("SUCCESS", "THE ROUTE USING SWAP :"+str(current_route)+"WITH SCORE:"+str(current_score))
-
-                else:
-                    msg.showerror("Value Error", "Enter a number higher than zero")
-                    self.textt.delete(0,END)
-            except:
+            if int(self.textt.get(1.0,END)) > 0:
+                tries = int(self.textt.get(1.0,END))
+                lista  = [relocatef(visited_nodes, totalscore , tries,self.table,self.number),_2optf(visited_nodes,totalscore, tries,self.table,self.number)]
+                new_route , new_score  = bvns(visited_nodes,totalscore,lista,tries)
+                msg.showinfo("Total Score", "Route:"+str(new_route)+ "Score:"+str(new_score))
+            else:
                 msg.showerror("Value Error", "Enter a number higher than zero")
                 self.textt.delete(1.0,END)
 
-"""
-        
+
 
 def main():
     root=Tk()
