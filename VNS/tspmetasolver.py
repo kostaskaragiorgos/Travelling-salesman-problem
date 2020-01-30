@@ -82,12 +82,16 @@ class TSP_META_SOLVER ():
             msg.showinfo("Import", "You need to import a .txt file")
         else:
             visited_nodes, totalscore = nearserN(self.table,self.number) 
-            if int(self.textt.get(1.0,END)) > 0:
-                tries = int(self.textt.get(1.0,END))
-                lista  = [relocatef(visited_nodes, totalscore , tries,self.table,self.number),_2optf(visited_nodes,totalscore, tries,self.table,self.number)]
-                new_route , new_score  = bvns(visited_nodes,totalscore,lista,tries)
-                msg.showinfo("Total Score", "Route:"+str(new_route)+ "Score:"+str(new_score))
-            else:
+            try:
+                if int(self.textt.get(1.0,END)) > 0:
+                    tries = int(self.textt.get(1.0,END))
+                    lista  = [relocatef(visited_nodes, totalscore , tries,self.table,self.number),_2optf(visited_nodes,totalscore, tries,self.table,self.number)]
+                    new_route , new_score  = bvns(visited_nodes,totalscore,lista,tries)
+                    msg.showinfo("Total Score", "Route:"+str(new_route)+ "Score:"+str(new_score))
+                else:
+                    msg.showerror("Value Error", "Enter a number higher than zero")
+                    self.textt.delete(1.0,END)
+            except:
                 msg.showerror("Value Error", "Enter a number higher than zero")
                 self.textt.delete(1.0,END)
 
