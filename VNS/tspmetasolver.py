@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox as msg
 from tkinter import filedialog
-#from nearestneighbor import *
+from nearestneighbor import *
 #from _2_opt import partial_reverse, _2optf
 #from swap import swap ,swapPositions
 #from relocate import *
@@ -62,13 +62,13 @@ class TSP_META_SOLVER ():
 
         self.filed = filedialog.askopenfilename(initialdir="/",title="Select txt file",
                                                    filetypes=(("txt files","*.txt"),("all files","*.*")))
-        """
+        
         if ".txt" in self.filed:
             self.table,self.number = fileparser(self.filed)
         else:
             msg.showerror("Error","NO TXT FILE ADDED")
-                """
                 
+
     def helpmenu(self):
         msg.showinfo("Help","A TSP SOLVER")
     
@@ -80,8 +80,10 @@ class TSP_META_SOLVER ():
     def solve(self):
         if self.filed  == "":
             msg.showinfo("Import", "You need to import a .txt file")
-            """
+        else:
             visited_nodes, totalscore = nearserN(self.table,self.number) 
+            msg.showinfo("SUCCESS", "THE ROUTE USING 2-OPT:"+str(visited_nodes)+"WITH SCORE:"+str(totalscore))
+            """
             try:
                 if int(self.textt.get(1.0,END)) > 0:
                     tries = int(self.textt.get(1.0,END))
