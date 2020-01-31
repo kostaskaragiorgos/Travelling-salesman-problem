@@ -21,9 +21,9 @@ def visitcheck(totalscore,table,number,visited_nodes,current_node,pos_of_min,min
         return table , totalscore ,current_node , visited_nodes , pos_of_min,minofthetable
 
 
-def nearserN(table,number):
+def nearserN(table,number,start_node):
     totalscore = 0
-    current_node = starting_node = number[0] 
+    current_node = starting_node = start_node
     table = table.replace(0,np.nan)
     visited_nodes = []
     visited_nodes.append(starting_node)
@@ -40,7 +40,7 @@ def nearserN(table,number):
         
 """
 table , number = fileparser("symmetric10nodesexample.txt")
-visited_nodes, totalscore = nearserN(table,number)
+visited_nodes, totalscore = nearserN(table,number,0)
 print("Route:",visited_nodes)
 print("Total_score:",totalscore)
 """

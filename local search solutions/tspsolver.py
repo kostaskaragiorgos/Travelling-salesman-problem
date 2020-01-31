@@ -38,9 +38,6 @@ class TSP_SOLVER ():
         self.binsert = Button(self.master,text = "Insert a file",command = self.insertfile)
         self.binsert.pack()
         
-
-        self.solvb = Button(self.master,text = "Solve",command = self.solve)
-        self.solvb.pack()
     
     def exitmenu(self):
         if msg.askokcancel("Quit?", "Really quit?"):
@@ -55,6 +52,14 @@ class TSP_SOLVER ():
           
         if ".txt" in self.filed:
             self.table,self.number = fileparser(self.filed)
+            nodelist = list(self.number)
+            self.varnumnode = StringVar(self.master)
+            self.varnumnode.set(nodelist[0])
+            self.popupsetmenu = OptionMenu(self.master,self.varnumnode,*nodelist)
+            self.popupsetmenu.pack()
+            
+            self.solvb = Button(self.master,text = "Solve",command = self.solve)
+            self.solvb.pack()
         else:
             msg.showerror("Error","NO TXT FILE ADDED")
                 
@@ -68,7 +73,7 @@ class TSP_SOLVER ():
 
     def solve(self):
         
-        visited_nodes, totalscore = nearserN(self.table,self.number) 
+        visited_nodes, totalscore = nearserN(self.table,self.number,self.varnumnode.get()) 
         msg.showinfo("SUCCESS", "THE ROUTE USING NEAREST NEIGHBOR"+str(visited_nodes)+"with score:"+str(totalscore))
 
         

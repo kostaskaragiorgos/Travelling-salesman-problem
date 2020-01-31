@@ -49,8 +49,6 @@ class TSP_META_SOLVER ():
         self.textt = Text(self.master , height = 1)
         self.textt.pack()
 
-        self.solvb = Button(self.master,text = "Solve",command = self.solve)
-        self.solvb.pack()
     
     def exitmenu(self):
         if msg.askokcancel("Quit?", "Really quit?"):
@@ -65,6 +63,14 @@ class TSP_META_SOLVER ():
         
         if ".txt" in self.filed:
             self.table,self.number = fileparser(self.filed)
+            nodelist = list(self.number)
+            self.varnumnode = StringVar(self.master)
+            self.varnumnode.set(nodelist[0])
+            self.popupsetmenu = OptionMenu(self.master,self.varnumnode,*nodelist)
+            self.popupsetmenu.pack()
+            
+            self.solvb = Button(self.master,text = "Solve",command = self.solve)
+            self.solvb.pack()
         else:
             msg.showerror("Error","NO TXT FILE ADDED")
                 
@@ -81,7 +87,7 @@ class TSP_META_SOLVER ():
         if self.filed  == "":
             msg.showinfo("Import", "You need to import a .txt file")
         else:
-            visited_nodes, totalscore = nearserN(self.table,self.number) 
+            visited_nodes, totalscore = nearserN(self.table,self.number,self.varnumnode.get()) 
             try:
                 if int(self.textt.get(1.0,END)) > 0:
                     tries = int(self.textt.get(1.0,END))
