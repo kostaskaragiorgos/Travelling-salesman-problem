@@ -1,9 +1,5 @@
-"""
-BASIC 
-if !improvment change
-else 
-go to the first 
-"""
+
+
 from nearestneighbor import *
 from swap import *
 from relocate import *

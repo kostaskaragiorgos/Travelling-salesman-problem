@@ -5,7 +5,7 @@ import random as rd
 
 def fileparser(filename):
     """
-    inputs: filename --> the .txt file of the tsp problem
+    input: filename --> the .txt file of the tsp problem
     return : the table and columns 
     """
     file = np.loadtxt(filename)
