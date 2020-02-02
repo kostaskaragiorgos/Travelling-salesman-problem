@@ -94,6 +94,7 @@ class TSP_META_SOLVER ():
                     lista  = [relocatef(visited_nodes, totalscore , tries,self.table,self.number),_2optf(visited_nodes,totalscore, tries,self.table,self.number)]
                     new_route , new_score  = bvns(visited_nodes,totalscore,lista,tries)
                     msg.showinfo("Total Score", "Route:"+str(new_route)+ "Score:"+str(new_score))
+                    self.textt.delete(1.0,END)
                 else:
                     msg.showerror("Value Error", "Enter a number higher than zero")
                     self.textt.delete(1.0,END)
