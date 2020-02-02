@@ -6,7 +6,7 @@ Given a list of nodes you need to find the best way to visit every node only onc
 
 # TSP GENERATOR 
 
-Creates a random problem and saves it to a .txt file
+Creates a random instance and saves it to a .txt file
 
 
 ## Dependencies
