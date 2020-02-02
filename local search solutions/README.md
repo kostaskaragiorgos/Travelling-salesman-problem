@@ -72,7 +72,7 @@ Creates a random problem and saves it to a .txt file
 
 **Current Version**
 
-<p><img src ="tspsolver.png" title = "TSP Solver Version"/> </p>
+<p><img src ="tsp solver.png" title = "TSP Solver Version"/> </p>
 
 
 # TSP SOLVER 2
@@ -100,4 +100,4 @@ Creates a random problem and saves it to a .txt file
 
 **Current Version**
 
-<p><img src ="TSP SOLVER 2.png" title = "TSP Solver 2 Version"/> </p>
+<p><img src ="tsp solver 2.png" title = "TSP Solver 2 Version"/> </p>
