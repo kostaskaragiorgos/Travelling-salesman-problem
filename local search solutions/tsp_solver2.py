@@ -16,11 +16,13 @@ class TSP_SOLVER2 ():
         self.master.resizable(False,False)
         self.filed = ""
         
+        # menu 
         self.menu = Menu(self.master)
         
         self.file_menu = Menu(self.menu,tearoff = 0)
         self.file_menu.add_command(label = "Insert a file",accelerator = 'Ctrl+O',command = self.insertfile)
         self.file_menu.add_command(label = "Solve",accelerator = 'Alt+F5',command = self.solve)
+        self.file_menu.add_command(label = "Close file",command = self.cf)
         self.file_menu.add_command(label="Exit",accelerator= 'Alt+F4',command = self.exitmenu)
         self.menu.add_cascade(label = "File",menu=self.file_menu)
         
@@ -59,7 +61,12 @@ class TSP_SOLVER2 ():
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
     
-    
+    def cf(self):
+        if self.filed  == "":
+            msg.showerror("NO FILE", "NO FILE TO CLOSE")
+        else:
+            self.filed = ""
+            msg.showinfo("FILE CLOSED", "SUCCESS") #CHANGE THE MESSAGE 
     
     def insertfile(self):
 
