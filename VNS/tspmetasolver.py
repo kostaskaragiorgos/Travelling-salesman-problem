@@ -21,6 +21,7 @@ class TSP_META_SOLVER ():
         self.file_menu = Menu(self.menu,tearoff = 0)
         self.file_menu.add_command(label = "Insert a file",accelerator = 'Ctrl+O',command = self.insertfile)
         self.file_menu.add_command(label = "Solve",accelerator = 'Alt+F5',command = self.solve)
+        self.file_menu.add_command(label = "Close file",accelerator ="Ctrl+F5",command = self.cf)
         self.file_menu.add_command(label="Exit",accelerator= 'Alt+F4',command = self.exitmenu)
         self.menu.add_cascade(label = "File",menu=self.file_menu)
         
@@ -37,6 +38,7 @@ class TSP_META_SOLVER ():
         self.master.bind('<Alt-F5>',lambda event:self.solve())
         self.master.bind('<Alt-F4>',lambda event: self.exitmenu())
         self.master.bind('<Control-F1>',lambda event: self.helpmenu())
+        self.master.bind('<Control-F5>',lambda event: self.cf())
         self.master.bind('<Control-i>',lambda event:self.aboutmenu())
         
         self.binsert = Button(self.master,text = "Insert a file",command = self.insertfile)
@@ -49,7 +51,13 @@ class TSP_META_SOLVER ():
         self.textt = Text(self.master , height = 1)
         self.textt.pack()
 
-    
+    def cf(self):
+        if self.filed == "":
+            msg.showerror("ERROR","NO FILE IMPORTED TO CLOSE")
+        else:
+            self.filed = ""
+            msg.showinfo("SUCCESS","FILE CLOSED")
+
     def exitmenu(self):
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
