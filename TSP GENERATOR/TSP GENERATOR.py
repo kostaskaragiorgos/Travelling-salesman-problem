@@ -1,5 +1,6 @@
 from tkinter import *
-from tkinter import filedialog
+from tkinter import filedialog 
+from tkinter import simpledialog
 from tkinter import messagebox as msg
 import  numpy as np
 import random as rd
@@ -55,6 +56,14 @@ class TSP_GENERATOR ():
     
 
     def gen(self):
+        self.startingvalue = simpledialog.askinteger("Min Distance","Enter the value of the min possible distance", parent=self.master,minvalue= 1)
+        while self.startingvalue is None:
+            self.startingvalue = simpledialog.askinteger("Min Distance","Enter the value of the min possible distance", parent=self.master,minvalue= 1)
+        
+        self.endingvalue = simpledialog.askinteger("Max Distance" , "Enter the max possible distance",parent= self.master, minvalue= self.startingvalue+1)
+        while self.endingvalue is None:
+            self.endingvalue = simpledialog.askinteger("Max Distance" , "Enter the max possible distance",parent= self.master, minvalue  = self.startingvalue+1)
+            
         create_table = 0
         try:
             if int(self.text.get(1.0,END)) >= 4:
@@ -74,7 +83,7 @@ class TSP_GENERATOR ():
                         if i == j:
                             a[[i],[j]] = 0
                         elif i>j:
-                            a[[i],[j]] = rd.randint(1,1000)
+                            a[[i],[j]] = rd.randint(self.startingvalue,self.endingvalue)
             
                 for i in range(len(a)):
                     for j in range(len (a)):
@@ -87,12 +96,12 @@ class TSP_GENERATOR ():
                         if i == j:
                             a[[i],[j]] = 0
                         elif i>j:
-                            a[[i],[j]] = rd.randint(1,1000)
+                            a[[i],[j]] = rd.randint(self.startingvalue,self.endingvalue)
                 
                 for i in range(len(a)):
                     for j in range(len (a)):
                         if i<j:
-                            a[[i],[j]] = rd.randint(1,1000)
+                            a[[i],[j]] = rd.randint(self.startingvalue,self.endingvalue)
                 
                         
             filenamesave =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = (("txt files","*.txt"),("all files","*.*")))
