@@ -30,6 +30,7 @@ class TSP_GENERATOR ():
         self.geb= Button(self.master, text ="GENERATE",command = self.gen)
         self.geb.pack()
         
+        #menu
         self.menu = Menu(self.master)
         
         self.file_menu = Menu(self.menu,tearoff = 0)
@@ -56,6 +57,8 @@ class TSP_GENERATOR ():
     
 
     def gen(self):
+        """ generates the instance and saves it to a .txt file"""
+        
         self.startingvalue = simpledialog.askinteger("Min Distance","Enter the value of the min possible distance", parent=self.master,minvalue= 1)
         while self.startingvalue is None:
             self.startingvalue = simpledialog.askinteger("Min Distance","Enter the value of the min possible distance", parent=self.master,minvalue= 1)

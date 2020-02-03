@@ -12,6 +12,8 @@ class TSP_SOLVER ():
         self.master.geometry("250x120")
         self.master.resizable(False,False)
         
+
+        #menu
         self.menu = Menu(self.master)
         
         self.file_menu = Menu(self.menu,tearoff = 0)
@@ -46,6 +48,7 @@ class TSP_SOLVER ():
     
     
     def insertfile(self):
+        """ user inserts a .txt file (problem instance ) """
 
         self.filed = filedialog.askopenfilename(initialdir="/",title="Select txt file",
                                                    filetypes=(("txt files","*.txt"),("all files","*.*")))
@@ -72,7 +75,7 @@ class TSP_SOLVER ():
 
 
     def solve(self):
-        
+        """solution function (uses nearestneighbor.py file) """
         visited_nodes, totalscore = nearserN(self.table,self.number,self.varnumnode.get()) 
         msg.showinfo("SUCCESS", "THE ROUTE USING NEAREST NEIGHBOR"+str(visited_nodes)+"with score:"+str(totalscore))
 
