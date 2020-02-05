@@ -108,7 +108,7 @@ class TSP_GENERATOR ():
                 
                         
             filenamesave =  filedialog.asksaveasfilename(initialdir = "/",title = "Select file",filetypes = (("txt files","*.txt"),("all files","*.*")))
-            if "*.csv" in filenamesave:
+            if ".txt" in filenamesave:
                 with open(filenamesave, 'w') as f:
                     for i in range(len(a)):
                         for j in range(len(a)):
