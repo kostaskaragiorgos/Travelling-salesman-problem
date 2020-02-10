@@ -64,7 +64,7 @@ class TSP_SOLVER ():
           
         if ".txt" in self.filed:
             self.table,self.number = fileparser(self.filed)
-            msg.showinfo("SUCCESS" , "THE PROBLEM SUCCESSFULLY INSERTED \nNumber of nodes:" + str(len(self.number)))
+            msg.showinfo("SUCCESS" , "THE FILE SUCCESSFULLY INSERTED \nNumber of nodes:" + str(len(self.number)))
             nodelist = list(self.number)
             self.varnumnode = StringVar(self.master)
             self.varnumnode.set(nodelist[0])
