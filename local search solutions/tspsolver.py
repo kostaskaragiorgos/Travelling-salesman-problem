@@ -64,6 +64,7 @@ class TSP_SOLVER ():
           
         if ".txt" in self.filed:
             self.table,self.number = fileparser(self.filed)
+            msg.showinfo("SUCCESS" , "THE PROBLEM SUCCESSFULLY INSERTED \nNumber of nodes:" + str(len(self.number)))
             nodelist = list(self.number)
             self.varnumnode = StringVar(self.master)
             self.varnumnode.set(nodelist[0])
@@ -84,6 +85,7 @@ class TSP_SOLVER ():
 
 
     def solve(self):
+        """ solves the problem """
         if self.filed  == "":
             msg.showinfo("Import", "You need to import a .txt file")
         else:
