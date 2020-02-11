@@ -63,6 +63,9 @@ class TSP_SOLVER2 ():
             self.master.destroy()
     
     def cf(self):
+        
+        """ closes the file """ 
+
         if self.filed  == "":
             msg.showerror("NO FILE", "NO FILE TO CLOSE")
         else:
@@ -99,6 +102,9 @@ class TSP_SOLVER2 ():
 
 
     def solve(self):
+
+        """ solves the problem """
+
         if self.filed  == "":
             msg.showinfo("Import", "You need to import a .txt file")
         else:
