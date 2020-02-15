@@ -12,10 +12,10 @@ class TSP_SOLVER2 ():
     def __init__(self,master):
         self.master = master
         self.master.title("TSP_SOLVER 2")
-        self.master.geometry("250x160")
+        self.master.geometry("250x200")
         self.master.resizable(False,False)
         self.filed = ""
-        
+
         # menu 
         self.menu = Menu(self.master)
         
@@ -57,6 +57,7 @@ class TSP_SOLVER2 ():
         self.textt = Text(self.master , height = 1)
         self.textt.pack()
 
+
     
     def exitmenu(self):
         if msg.askokcancel("Quit?", "Really quit?"):
@@ -70,28 +71,33 @@ class TSP_SOLVER2 ():
             msg.showerror("NO FILE", "NO FILE TO CLOSE")
         else:
             self.filed = ""
+            self.popupsetmenu.forget()
+            self.solvb.forget()
             msg.showinfo("FILE CLOSED", "SUCCESS") #CHANGE THE MESSAGE 
     
     def insertfile(self):
 
         """ user inserts a .txt file (problem instance ) """
-
-        self.filed = filedialog.askopenfilename(initialdir="/",title="Select txt file",
+        if self.filed == "":
+            self.filed = filedialog.askopenfilename(initialdir="/",title="Select txt file",
                                                    filetypes=(("txt files","*.txt"),("all files","*.*")))
           
-        if ".txt" in self.filed:
-            self.table,self.number = fileparser(self.filed)
-            msg.showinfo("SUCCESS" , "THE FILE SUCCESSFULLY INSERTED \nNumber of nodes:" + str(len(self.number)))
-            nodelist = list(self.number)
-            self.varnumnode = StringVar(self.master)
-            self.varnumnode.set(nodelist[0])
-            self.popupsetmenu = OptionMenu(self.master,self.varnumnode,*nodelist)
-            self.popupsetmenu.pack()
+            if ".txt" in self.filed:
+                self.table,self.number = fileparser(self.filed)
+                msg.showinfo("SUCCESS" , "THE FILE SUCCESSFULLY INSERTED \nNumber of nodes:" + str(len(self.number)))
+
+                self.nodelist = list(self.number)
+                self.varnumnode = StringVar(self.master)
+                self.varnumnode.set(self.nodelist[0])
+                self.popupsetmenu = OptionMenu(self.master,self.varnumnode,*self.nodelist)
+                self.popupsetmenu.pack()
             
-            self.solvb = Button(self.master,text = "Solve",command = self.solve)
-            self.solvb.pack()
+                self.solvb = Button(self.master,text = "Solve",command = self.solve)
+                self.solvb.pack()
+            else:
+                msg.showerror("Error","NO TXT FILE ADDED")
         else:
-            msg.showerror("Error","NO TXT FILE ADDED")
+            msg.showerror("ERROR","YOU NEED TO CLOSE THE FILE")
                 
     def helpmenu(self):
         msg.showinfo("Help","A TSP SOLVER")
