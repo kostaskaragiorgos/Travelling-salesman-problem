@@ -56,6 +56,8 @@ class TSP_META_SOLVER ():
             msg.showerror("ERROR","NO FILE IMPORTED TO CLOSE")
         else:
             self.filed = ""
+            self.popupsetmenu.forget()
+            self.solvb.forget()
             msg.showinfo("SUCCESS","FILE CLOSED")
 
     def exitmenu(self):
@@ -65,24 +67,26 @@ class TSP_META_SOLVER ():
     
     
     def insertfile(self):
-
-        self.filed = filedialog.askopenfilename(initialdir="/",title="Select txt file",
+        if self.filed == "":
+            self.filed = filedialog.askopenfilename(initialdir="/",title="Select txt file",
                                                    filetypes=(("txt files","*.txt"),("all files","*.*")))
-        
-        if ".txt" in self.filed:
-            self.table,self.number = fileparser(self.filed)
-            nodelist = list(self.number)
-            self.varnumnode = StringVar(self.master)
-            self.varnumnode.set(nodelist[0])
-            self.popupsetmenu = OptionMenu(self.master,self.varnumnode,*nodelist)
-            self.popupsetmenu.pack()
-            
-            self.solvb = Button(self.master,text = "Solve",command = self.solve)
-            self.solvb.pack()
-        else:
-            msg.showerror("Error","NO TXT FILE ADDED")
-                
 
+            if ".txt" in self.filed:
+                self.table,self.number = fileparser(self.filed)
+                nodelist = list(self.number)
+                self.varnumnode = StringVar(self.master)
+                self.varnumnode.set(nodelist[0])
+                self.popupsetmenu = OptionMenu(self.master,self.varnumnode,*nodelist)
+                self.popupsetmenu.pack()
+            
+                self.solvb = Button(self.master,text = "Solve",command = self.solve)
+                self.solvb.pack()
+            else:
+                msg.showerror("Error","NO TXT FILE ADDED")
+        else:
+            msg.showerror("ERROR","YOU NEED TO CLOSE THE FILE")
+
+                
     def helpmenu(self):
         msg.showinfo("Help","A TSP SOLVER")
     
