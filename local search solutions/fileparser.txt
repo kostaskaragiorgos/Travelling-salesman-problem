@@ -1,0 +1,1 @@
+{"fileparser.py": [{"type": "function", "rank": "A", "col_offset": 0, "name": "fileparser", "complexity": 2, "endline": 16, "lineno": 6, "closures": []}]}
