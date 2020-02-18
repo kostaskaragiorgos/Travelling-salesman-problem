@@ -1,0 +1,1 @@
+{"basicvn.py": [{"type": "function", "rank": "B", "col_offset": 0, "name": "bvns", "complexity": 7, "lineno": 20, "endline": 42, "closures": []}]}
