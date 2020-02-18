@@ -1,0 +1,1 @@
+{"_2_opt.py": [{"type": "function", "rank": "A", "complexity": 4, "col_offset": 0, "lineno": 5, "endline": 12, "name": "partial_reverse", "closures": []}, {"type": "function", "rank": "A", "complexity": 4, "col_offset": 0, "lineno": 15, "endline": 32, "name": "_2optf", "closures": []}]}
