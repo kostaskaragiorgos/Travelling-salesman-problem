@@ -1,0 +1,1 @@
+{"relocate.py": [{"type": "function", "rank": "A", "col_offset": 0, "complexity": 4, "lineno": 16, "endline": 33, "name": "relocatef", "closures": []}, {"type": "function", "rank": "A", "col_offset": 0, "complexity": 1, "lineno": 5, "endline": 8, "name": "relocate", "closures": []}]}
