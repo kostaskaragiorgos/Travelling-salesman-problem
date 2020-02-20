@@ -1,8 +1,8 @@
-import numpy as np
-import pandas as pd
 """
 File Parser for tsp problems
 """
+import numpy as np
+import pandas as pd
 def fileparser(filename):
     """
     inputs: filename --> the .txt file of the tsp problem
