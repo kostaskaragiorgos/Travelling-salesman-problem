@@ -1,8 +1,8 @@
-import numpy as np 
-import pandas as pd 
-import random as rd
- 
-
+import numpy as np
+import pandas as pd
+"""
+File Parser for tsp problems
+"""
 def fileparser(filename):
     """
     inputs: filename --> the .txt file of the tsp problem
@@ -12,8 +12,8 @@ def fileparser(filename):
     df = pd.DataFrame(file)
     node_no = len(df)
     c = [str(n) for n in range(node_no)]
-    df = pd.DataFrame(file, columns  = c)
-    return df , c
+    df = pd.DataFrame(file, columns=c)
+    return df, c
 
 
 #table , number = fileparser("symmetric10nodesexample.txt")
