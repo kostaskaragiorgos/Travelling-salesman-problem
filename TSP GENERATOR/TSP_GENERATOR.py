@@ -9,7 +9,7 @@ def helpmenu():
     msg.showinfo("HELP","ENTER THE NUMBER OF NODES PICK ONE OF THE WAYS TO CREATE THE NODES AND PRESS GENERATE")
 def aboutmenu():
     msg.showinfo("About","Version 1.0")
-def get_values_bond(self):
+def values_bounds(self):
         self.startingvalue = simpledialog.askinteger("Min Distance", "Enter the value of the min possible distance", parent=self.master, minvalue=1)
         while self.startingvalue is None:
             self.startingvalue = simpledialog.askinteger("Min Distance", "Enter the value of the min possible distance", parent=self.master, minvalue=1)
@@ -17,8 +17,20 @@ def get_values_bond(self):
         while self.endingvalue is None:
             self.endingvalue = simpledialog.askinteger("Max Distance", "Enter the max possible distance", parent=self.master, minvalue=self.startingvalue+1)
         return self.startingvalue, self.endingvalue
-
-def symmetric_table(self,):
+def asymmetric_table(self):
+    a =  np.ones((int(self.text.get(1.0, END)), int(self.text.get(1.0, END))))
+    for i in range(len(a)):
+        for j in range(len(a)):
+            if i == j:
+                a[[i], [j]] = 0
+            elif i>j:
+                a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
+    for i in range(len(a)):
+        for j in range(len (a)):
+            if i<j :
+                a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
+    return a
+def symmetric_table(self):
     a =  np.ones((int(self.text.get(1.0, END)), int(self.text.get(1.0, END))))
     for i in range(len(a)):
         for j in range(len(a)):
@@ -72,21 +84,11 @@ class TSP_GENERATOR ():
         """ generates the instance and saves it to a .txt file"""
         try:
             if int(self.text.get(1.0, END)) >= 4:
-                get_values_bond(self)
+                values_bounds(self)
                 if self.r.get() == 1:
                     a = symmetric_table(self)
                 elif self.r.get() == 2:
-                    a =  np.ones((int(self.text.get(1.0, END)), int(self.text.get(1.0, END))))
-                    for i in range(len(a)):
-                        for j in range(len(a)):
-                            if i == j:
-                                a[[i], [j]] = 0
-                            elif i>j:
-                                a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
-                    for i in range(len(a)):
-                        for j in range(len (a)):
-                            if i<j :
-                                a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
+                    a = asymmetric_table(self)
                 filenamesave =  filedialog.asksaveasfilename(initialdir = "/", title = "Select file", filetypes = (("txt files", "*.txt"), ("all files", "*.*")))
                 if ".txt" in filenamesave:
                     with open(filenamesave, 'w') as f:
