@@ -25,9 +25,7 @@ def asymmetric_table(self):
                 a[[i], [j]] = 0
             elif i>j:
                 a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
-    for i in range(len(a)):
-        for j in range(len (a)):
-            if i<j :
+            elif i<j :
                 a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
     return a
 def symmetric_table(self):
@@ -43,6 +41,17 @@ def symmetric_table(self):
             if i<j:
                 a[[i], [j]] = a[[j], [i]]
     return a
+def save_file(a):
+    filenamesave =  filedialog.asksaveasfilename(initialdir = "/", title = "Select file", filetypes = (("txt files", "*.txt"), ("all files", "*.*")))
+    if ".txt" in filenamesave:
+        with open(filenamesave, 'w') as f:
+            for i in range(len(a)):
+                for j in range(len(a)):
+                    f.write(str(a[i][j])+" ")
+                f.write("\n")
+        msg.showinfo("Success", "Success")
+    else:
+        msg.showerror("Abort" , "Abort")
 class TSP_GENERATOR ():
     def __init__(self, master):
         self.master = master
@@ -89,16 +98,7 @@ class TSP_GENERATOR ():
                     a = symmetric_table(self)
                 elif self.r.get() == 2:
                     a = asymmetric_table(self)
-                filenamesave =  filedialog.asksaveasfilename(initialdir = "/", title = "Select file", filetypes = (("txt files", "*.txt"), ("all files", "*.*")))
-                if ".txt" in filenamesave:
-                    with open(filenamesave, 'w') as f:
-                        for i in range(len(a)):
-                            for j in range(len(a)):
-                                f.write(str(a[i][j])+" ")
-                            f.write("\n")
-                    msg.showinfo("Success", "Success")
-                else:
-                    msg.showerror("Abort" , "Abort")
+                save_file(a)
             else:
                 msg.showerror("Value Error", "Enter a number higher than four")
         except:
