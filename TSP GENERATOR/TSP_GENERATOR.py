@@ -9,6 +9,28 @@ def helpmenu():
     msg.showinfo("HELP","ENTER THE NUMBER OF NODES PICK ONE OF THE WAYS TO CREATE THE NODES AND PRESS GENERATE")
 def aboutmenu():
     msg.showinfo("About","Version 1.0")
+def get_values_bond(self):
+        self.startingvalue = simpledialog.askinteger("Min Distance", "Enter the value of the min possible distance", parent=self.master, minvalue=1)
+        while self.startingvalue is None:
+            self.startingvalue = simpledialog.askinteger("Min Distance", "Enter the value of the min possible distance", parent=self.master, minvalue=1)
+        self.endingvalue = simpledialog.askinteger("Max Distance", "Enter the max possible distance", parent=self.master, minvalue=self.startingvalue+1)
+        while self.endingvalue is None:
+            self.endingvalue = simpledialog.askinteger("Max Distance", "Enter the max possible distance", parent=self.master, minvalue=self.startingvalue+1)
+        return self.startingvalue, self.endingvalue
+
+def symmetric_table(self,):
+    a =  np.ones((int(self.text.get(1.0, END)), int(self.text.get(1.0, END))))
+    for i in range(len(a)):
+        for j in range(len(a)):
+            if i == j:
+                a[[i], [j]] = 0
+            elif i>j:
+                a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
+    for i in range(len(a)):
+        for j in range(len (a)):
+            if i<j:
+                a[[i], [j]] = a[[j], [i]]
+    return a
 class TSP_GENERATOR ():
     def __init__(self, master):
         self.master = master
@@ -48,58 +70,39 @@ class TSP_GENERATOR ():
             self.master.destroy()
     def gen(self):
         """ generates the instance and saves it to a .txt file"""
-        self.startingvalue = simpledialog.askinteger("Min Distance", "Enter the value of the min possible distance", parent=self.master, minvalue=1)
-        while self.startingvalue is None:
-            self.startingvalue = simpledialog.askinteger("Min Distance", "Enter the value of the min possible distance", parent=self.master, minvalue=1)
-        self.endingvalue = simpledialog.askinteger("Max Distance", "Enter the max possible distance", parent=self.master, minvalue=self.startingvalue+1)
-        while self.endingvalue is None:
-            self.endingvalue = simpledialog.askinteger("Max Distance", "Enter the max possible distance", parent=self.master, minvalue=self.startingvalue+1)
-        create_table = 0
         try:
             if int(self.text.get(1.0, END)) >= 4:
-                create_table += 1
+                get_values_bond(self)
+                if self.r.get() == 1:
+                    a = symmetric_table(self)
+                elif self.r.get() == 2:
+                    a =  np.ones((int(self.text.get(1.0, END)), int(self.text.get(1.0, END))))
+                    for i in range(len(a)):
+                        for j in range(len(a)):
+                            if i == j:
+                                a[[i], [j]] = 0
+                            elif i>j:
+                                a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
+                    for i in range(len(a)):
+                        for j in range(len (a)):
+                            if i<j :
+                                a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
+                filenamesave =  filedialog.asksaveasfilename(initialdir = "/", title = "Select file", filetypes = (("txt files", "*.txt"), ("all files", "*.*")))
+                if ".txt" in filenamesave:
+                    with open(filenamesave, 'w') as f:
+                        for i in range(len(a)):
+                            for j in range(len(a)):
+                                f.write(str(a[i][j])+" ")
+                            f.write("\n")
+                    msg.showinfo("Success", "Success")
+                else:
+                    msg.showerror("Abort" , "Abort")
             else:
                 msg.showerror("Value Error", "Enter a number higher than four")
         except:
             msg.showerror("Value Error", "Enter a number higher than four")
             self.text.delete(1.0, END)
-            create_table = 0
         
-        if create_table == 1:
-            if self.r.get() == 1:
-                a =  np.ones((int(self.text.get(1.0, END)), int(self.text.get(1.0, END))))
-                for i in range(len(a)):
-                    for j in range(len(a)):
-                        if i == j:
-                            a[[i], [j]] = 0
-                        elif i>j:
-                            a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
-                for i in range(len(a)):
-                    for j in range(len (a)):
-                        if i<j:
-                            a[[i], [j]] = a[[j], [i]]
-            elif self.r.get() == 2:
-                a =  np.ones((int(self.text.get(1.0, END)), int(self.text.get(1.0, END))))
-                for i in range(len(a)):
-                    for j in range(len(a)):
-                        if i == j:
-                            a[[i], [j]] = 0
-                        elif i>j:
-                            a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
-                for i in range(len(a)):
-                    for j in range(len (a)):
-                        if i<j :
-                            a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
-            filenamesave =  filedialog.asksaveasfilename(initialdir = "/", title = "Select file", filetypes = (("txt files", "*.txt"), ("all files", "*.*")))
-            if ".txt" in filenamesave:
-                with open(filenamesave, 'w') as f:
-                    for i in range(len(a)):
-                        for j in range(len(a)):
-                            f.write(str(a[i][j])+" ")
-                        f.write("\n")
-                msg.showinfo("Success", "Success")
-            else:
-                msg.showerror("Abort" , "Abort")
 def main():
     root = Tk()
     TSP_GENERATOR(root)
