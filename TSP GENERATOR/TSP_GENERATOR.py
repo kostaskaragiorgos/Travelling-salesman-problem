@@ -1,48 +1,53 @@
+"""
+generates tsp instances
+"""
 from tkinter import Label, Text, Button, Tk, Menu, IntVar, Radiobutton
-from tkinter import filedialog , END
+from tkinter import filedialog, END
 from tkinter import simpledialog
 from tkinter import messagebox as msg
-import  numpy as np
 import random as rd
-import pandas as pd
+import  numpy as np
 def helpmenu():
-    msg.showinfo("HELP","ENTER THE NUMBER OF NODES PICK ONE OF THE WAYS TO CREATE THE NODES AND PRESS GENERATE")
+    """ help menu function """
+    msg.showinfo("HELP", "ENTER THE NUMBER OF NODES PICK ONE OF THE WAYS TO CREATE THE NODES AND PRESS GENERATE")
 def aboutmenu():
-    msg.showinfo("About","Version 1.0")
+    """ about menu function """
+    msg.showinfo("About", "Version 1.0")
 def values_bounds(self):
+    self.startingvalue = simpledialog.askinteger("Min Distance", "Enter the value of the min possible distance", parent=self.master, minvalue=1)
+    while self.startingvalue is None:
         self.startingvalue = simpledialog.askinteger("Min Distance", "Enter the value of the min possible distance", parent=self.master, minvalue=1)
-        while self.startingvalue is None:
-            self.startingvalue = simpledialog.askinteger("Min Distance", "Enter the value of the min possible distance", parent=self.master, minvalue=1)
+    self.endingvalue = simpledialog.askinteger("Max Distance", "Enter the max possible distance", parent=self.master, minvalue=self.startingvalue+1)
+    while self.endingvalue is None:
         self.endingvalue = simpledialog.askinteger("Max Distance", "Enter the max possible distance", parent=self.master, minvalue=self.startingvalue+1)
-        while self.endingvalue is None:
-            self.endingvalue = simpledialog.askinteger("Max Distance", "Enter the max possible distance", parent=self.master, minvalue=self.startingvalue+1)
-        return self.startingvalue, self.endingvalue
+    return self.startingvalue, self.endingvalue
 def asymmetric_table(self):
-    a =  np.ones((int(self.text.get(1.0, END)), int(self.text.get(1.0, END))))
+    a = np.ones((int(self.text.get(1.0, END)), int(self.text.get(1.0, END))))
     for i in range(len(a)):
         for j in range(len(a)):
             if i == j:
                 a[[i], [j]] = 0
-            elif i>j:
+            elif i > j:
                 a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
-            elif i<j :
+            elif i < j:
                 a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
     return a
 def symmetric_table(self):
-    a =  np.ones((int(self.text.get(1.0, END)), int(self.text.get(1.0, END))))
+    a = np.ones((int(self.text.get(1.0, END)), int(self.text.get(1.0, END))))
     for i in range(len(a)):
         for j in range(len(a)):
             if i == j:
                 a[[i], [j]] = 0
-            elif i>j:
+            elif i > j:
                 a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
     for i in range(len(a)):
-        for j in range(len (a)):
-            if i<j:
+        for j in range(len(a)):
+            if i < j:
                 a[[i], [j]] = a[[j], [i]]
     return a
 def save_file(a):
-    filenamesave =  filedialog.asksaveasfilename(initialdir = "/", title = "Select file", filetypes = (("txt files", "*.txt"), ("all files", "*.*")))
+    """ saves .txt file """
+    filenamesave = filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
     if ".txt" in filenamesave:
         with open(filenamesave, 'w') as f:
             for i in range(len(a)):
@@ -51,8 +56,11 @@ def save_file(a):
                 f.write("\n")
         msg.showinfo("Success", "Success")
     else:
-        msg.showerror("Abort" , "Abort")
-class TSP_GENERATOR ():
+        msg.showerror("Abort", "Abort")
+class TSP_GENERATOR():
+    """
+    TSP_GENERATOR class
+    """
     def __init__(self, master):
         self.master = master
         self.master.title("TSP-GENERATOR")
@@ -78,15 +86,16 @@ class TSP_GENERATOR ():
         self.about_menu = Menu(self.menu, tearoff=0)
         self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=aboutmenu)
         self.menu.add_cascade(label="About", menu=self.about_menu)
-        self.help_menu = Menu(self.menu,tearoff=0)
+        self.help_menu = Menu(self.menu, tearoff=0)
         self.help_menu.add_command(label="Help", accelerator='Ctrl+F1', command=helpmenu)
-        self.menu.add_cascade(label="Help",menu=self.help_menu)
+        self.menu.add_cascade(label="Help", menu=self.help_menu)
         self.master.config(menu=self.menu)
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
         self.master.bind('<Control-F1>', lambda event: helpmenu())
         self.master.bind('<Control-i>', lambda event: aboutmenu())
         self.master.bind('<Control-o>', lambda  event: self.gen()) 
     def exitmenu(self):
+        """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
     def gen(self):
@@ -106,6 +115,7 @@ class TSP_GENERATOR ():
             self.text.delete(1.0, END)
         
 def main():
+    """ main function"""
     root = Tk()
     TSP_GENERATOR(root)
     root.mainloop()
