@@ -29,7 +29,7 @@ def asymmetric_table(self):
                 a[[i], [j]] = 0
             elif i > j:
                 a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
-            elif i < j:
+            else:
                 a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
     return a
 def symmetric_table(self):
@@ -40,9 +40,7 @@ def symmetric_table(self):
                 a[[i], [j]] = 0
             elif i > j:
                 a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
-    for i in range(len(a)):
-        for j in range(len(a)):
-            if i < j:
+            else:
                 a[[i], [j]] = a[[j], [i]]
     return a
 def save_file(a):
