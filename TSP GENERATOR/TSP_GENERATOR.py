@@ -40,7 +40,9 @@ def symmetric_table(self):
                 a[[i], [j]] = 0
             elif i > j:
                 a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
-            else:
+    for i in range(len(a)):
+        for j in range(len(a)):
+            if i < j:
                 a[[i], [j]] = a[[j], [i]]
     return a
 def save_file(a):
