@@ -14,7 +14,3 @@ def fileparser(filename):
     c = [str(n) for n in range(node_no)]
     df = pd.DataFrame(file, columns=c)
     return df, c
-
-
-#table , number = fileparser("symmetric10nodesexample.txt")
-#print(table,number)

@@ -8,11 +8,6 @@ def relocate(array ,pos_to_move , pos_where_to_be):
     return array
 
 
-
-#table , number = fileparser("symmetric10nodesexample.txt")
-#visited_nodes, totalscore = nearserN(table,number)
-
-
 def relocatef(visitednode,totalscore,tries,table,number):
     stop_counter = 0
     current_route = visitednode
@@ -32,6 +27,3 @@ def relocatef(visitednode,totalscore,tries,table,number):
             stop_counter += 1
     return current_route , current_score
 
-#current_route , current_score  =relocatef(visited_nodes , totalscore , 1000,table,number)
-#print(current_route,current_score)
-    

@@ -30,6 +30,3 @@ def _2optf(visitednode,totalscore,tries,table,number):
         else:
             stop_counter += 1
     return current_route , current_score
-
-#current_route , current_score  = _2optf(visited_nodes , totalscore , 10000,table,number)
-#print(current_route,current_score)

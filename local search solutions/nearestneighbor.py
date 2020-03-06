@@ -32,10 +32,3 @@ def nearserN(table, number, startnode):
             totalscore += table[int(starting_node), int(current_node)]
             visited_nodes.append(starting_node)
     return visited_nodes, totalscore
-        
-"""
-table , number = fileparser("symmetric10nodesexample.txt")
-visited_nodes, totalscore = nearserN(table,number)
-print("Route:",visited_nodes)
-print("Total_score:",totalscore)
-"""
