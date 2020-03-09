@@ -81,6 +81,7 @@ class TSP_GENERATOR():
         #menu
         self.menu = Menu(self.master)
         self.file_menu = Menu(self.menu, tearoff=0)
+        self.file_menu.add_command(label="Generate", accelerator='Ctrl+o',command=self.gen)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
@@ -112,8 +113,7 @@ class TSP_GENERATOR():
                 msg.showerror("Value Error", "Enter a number higher than four")
         except:
             msg.showerror("Value Error", "Enter a number higher than four")
-            self.text.delete(1.0, END)
-        
+            self.text.delete(1.0, END)    
 def main():
     """ main function"""
     root = Tk()
