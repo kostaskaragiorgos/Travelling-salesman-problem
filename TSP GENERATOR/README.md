@@ -33,5 +33,10 @@ Creates a random instance and saves it to a .txt file
 
 **Radon**
 <p><img src="TSP_GENERATOR RADON CC.png" title="TSP_GENERATOR RADON CC"/> </p>
+<p><img src="TSP_GENERATOR RADON HAL.png" title="TSP_GENERATOR RADON HAL"/></p>
+<p><img src="TSP_GENERATOR RADON MI.png" title="TSP_GENERATOR RADON MI"/></p>
+<p><img src="TSP_GENERATOR RADON RAW.png" title="TSP_GENERATOR RADON RAW"/></p>
+
+
 
 
