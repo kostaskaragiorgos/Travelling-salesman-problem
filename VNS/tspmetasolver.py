@@ -13,8 +13,8 @@ def helpmenu():
 def aboutmenu():
     """ about menu"""
     msg.showinfo("About", "Version 1.0")
-class TSP_META_SOLVER ():
-    def __init__(self,master):
+class TSP_META_SOLVER():
+    def __init__(self, master):
         self.master = master
         self.master.title("TSP_META_SOLVER")
         self.master.geometry("250x130")
@@ -65,7 +65,7 @@ class TSP_META_SOLVER ():
             self.filed = filedialog.askopenfilename(initialdir="/", title="Select txt file",
                                                    filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
             if ".txt" in self.filed:
-                self.table,self.number = fileparser(self.filed)
+                self.table, self.number = fileparser(self.filed)
                 nodelist = list(self.number)
                 self.varnumnode = StringVar(self.master)
                 self.varnumnode.set(nodelist[0])
