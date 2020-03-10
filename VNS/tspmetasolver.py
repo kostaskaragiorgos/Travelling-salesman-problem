@@ -7,6 +7,12 @@ from basicvn import bvns
 from relocate import *
 import pandas as pd 
 import numpy as np
+def helpmenu():
+    """ help menu"""
+    msg.showinfo("Help", "A TSP SOLVER")
+def aboutmenu():
+    """ about menu"""
+    msg.showinfo("About", "Version 1.0")
 class TSP_META_SOLVER ():
     def __init__(self,master):
         self.master = master
@@ -22,18 +28,18 @@ class TSP_META_SOLVER ():
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
         self.about_menu=Menu(self.menu, tearoff=0)
-        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=self.aboutmenu)
+        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=aboutmenu)
         self.menu.add_cascade(label="About", menu=self.about_menu)
         self.help_menu=Menu(self.menu, tearoff=0)
-        self.help_menu.add_command(label="Help", accelerator='Ctrl+F1', command=self.helpmenu)
+        self.help_menu.add_command(label="Help", accelerator='Ctrl+F1', command=helpmenu)
         self.menu.add_cascade(label="Help", menu=self.help_menu)
         self.master.config(menu=self.menu)
         self.master.bind('<Control-o>', lambda event: self.insertfile())
         self.master.bind('<Alt-F5>', lambda event: self.solve())
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
-        self.master.bind('<Control-F1>', lambda event: self.helpmenu())
+        self.master.bind('<Control-F1>', lambda event: helpmenu())
         self.master.bind('<Control-F5>', lambda event: self.cf())
-        self.master.bind('<Control-i>', lambda event: self.aboutmenu())
+        self.master.bind('<Control-i>', lambda event: aboutmenu())
         self.binsert = Button(self.master, text="Insert a file", command=self.insertfile)
         self.binsert.pack()
         self.lb = Label(self.master, text="TRIES")
@@ -41,6 +47,7 @@ class TSP_META_SOLVER ():
         self.textt = Text(self.master, height=1)
         self.textt.pack()
     def cf(self):
+        """ close file"""
         if self.filed == "":
             msg.showerror("ERROR","NO FILE IMPORTED TO CLOSE")
         else:
@@ -49,9 +56,11 @@ class TSP_META_SOLVER ():
             self.solvb.forget()
             msg.showinfo("SUCCESS", "FILE CLOSED")
     def exitmenu(self):
+        """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
     def insertfile(self):
+        """ insert file function """
         if self.filed == "":
             self.filed = filedialog.askopenfilename(initialdir="/", title="Select txt file",
                                                    filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
@@ -68,11 +77,8 @@ class TSP_META_SOLVER ():
                 msg.showerror("Error", "NO TXT FILE ADDED")
         else:
             msg.showerror("ERROR", "YOU NEED TO CLOSE THE FILE")
-    def helpmenu(self):
-        msg.showinfo("Help", "A TSP SOLVER")
-    def aboutmenu(self):
-        msg.showinfo("About", "Version 1.0")
     def solve(self):
+        """ solve Button function """
         if self.filed  == "":
             msg.showinfo("Import", "You need to import a .txt file")
         else:
@@ -92,8 +98,8 @@ class TSP_META_SOLVER ():
                 self.textt.delete(1.0, END)
 def main():
     """ main function"""
-    root=Tk()
+    root = Tk()
     TSP_META_SOLVER(root)
     root.mainloop()
-if __name__=='__main__':
+if __name__ == '__main__':
     main()
