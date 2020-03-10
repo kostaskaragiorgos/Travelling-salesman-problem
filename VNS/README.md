@@ -8,8 +8,14 @@ Given a list of nodes you need to find the best way to visit every node only onc
 
 **Current Version**
 
-<p><img src ="tsp_meta_solver.png" title = "TSP Solver 2 Version"/> </p>
+<p><img src ="tsp_meta_solver.png" title = "TSP META Solver  Version"/> </p>
 
+**Radon**
+
+<p><img src ="tsp_meta_solver radon cc.png" title = "TSP META SOLVER  RADON CC"/></p>
+<p><img src ="tsp_meta_solver radon hal.png" title = "TSP META SOLVER RADON HAL"/></p>
+<p><img src ="tsp_meta_solver radon mi.png" title = "TSP META SOLVER RADON MI"/></p>
+<p><img src ="tsp_meta_solver radon raw.png" title = "TSP META SOLVER RADON RAW"/></p>
 
 ## algorithms used
 
