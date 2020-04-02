@@ -46,7 +46,7 @@ Given a list of nodes you need to find the best way to visit every node only onc
 
 **Current Version**
 
-<p><img src ="tsp solver.png" title = "TSP Solver Version"/> </p>
+<p><img src ="images/tsp solver.png" title = "TSP Solver Version"/> </p>
 
 
 # TSP SOLVER 2
@@ -74,4 +74,4 @@ Given a list of nodes you need to find the best way to visit every node only onc
 
 **Current Version**
 
-<p><img src ="tsp solver 2.png" title = "TSP Solver 2 Version"/> </p>
+<p><img src ="images/tsp solver 2.png" title = "TSP Solver 2 Version"/> </p>
