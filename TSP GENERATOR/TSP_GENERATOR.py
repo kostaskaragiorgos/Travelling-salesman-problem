@@ -14,6 +14,7 @@ def aboutmenu():
     """ about menu function """
     msg.showinfo("About", "Version 1.0")
 def values_bounds(self):
+    """ user sets the range of distance """
     self.startingvalue = simpledialog.askinteger("Min Distance", "Enter the value of the min possible distance", parent=self.master, minvalue=1)
     while self.startingvalue is None:
         self.startingvalue = simpledialog.askinteger("Min Distance", "Enter the value of the min possible distance", parent=self.master, minvalue=1)
@@ -22,6 +23,7 @@ def values_bounds(self):
         self.endingvalue = simpledialog.askinteger("Max Distance", "Enter the max possible distance", parent=self.master, minvalue=self.startingvalue+1)
     return self.startingvalue, self.endingvalue
 def asymmetric_table(self):
+    """ creaton of asymmetric table """
     a = np.ones((int(self.text.get(1.0, END)), int(self.text.get(1.0, END))))
     for i in range(len(a)):
         for j in range(len(a)):
@@ -33,6 +35,7 @@ def asymmetric_table(self):
                 a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
     return a
 def symmetric_table(self):
+    """ creates a symmetric table """
     a = np.ones((int(self.text.get(1.0, END)), int(self.text.get(1.0, END))))
     for i in range(len(a)):
         for j in range(len(a)):
