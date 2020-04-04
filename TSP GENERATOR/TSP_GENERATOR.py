@@ -81,7 +81,7 @@ class TSP_GENERATOR():
         #menu
         self.menu = Menu(self.master)
         self.file_menu = Menu(self.menu, tearoff=0)
-        self.file_menu.add_command(label="Generate", accelerator='Ctrl+o',command=self.gen)
+        self.file_menu.add_command(label="Generate", accelerator='Ctrl+O',command=self.gen)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
@@ -92,6 +92,7 @@ class TSP_GENERATOR():
         self.menu.add_cascade(label="Help", menu=self.help_menu)
         self.master.config(menu=self.menu)
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
+        self.master.bind('<Control-o>', lambda event: self.gen())
         self.master.bind('<Control-F1>', lambda event: helpmenu())
         self.master.bind('<Control-i>', lambda event: aboutmenu())
         self.master.bind('<Control-o>', lambda  event: self.gen()) 

@@ -1,5 +1,6 @@
 File menu
-================
+=================
+Generate Ctrl + O
 Exit Alt + F4
 =============
 About menu
@@ -9,6 +10,3 @@ About Ctrl + I
 Help menu 
 ==============
 Help Ctrl + F1
-=================
-Generate Ctrl + O
-=================
