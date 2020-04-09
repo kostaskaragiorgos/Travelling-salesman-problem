@@ -1,12 +1,20 @@
-# Travelling-salesman-problem
-
-## Definition
-Given a list of nodes you need to find the best way to visit every node only once and return to the starting point with the lowest possible cost
-
-
 # TSP GENERATOR 
-
 Creates a random instance and saves it to a .txt file
+
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+
+# Table of contents
+
+<!--ts-->
+  * [TSP-GENERATOR](#TSP-GENERATOR)
+  * [Table of contents](#Table_of_contents)
+  * [Dependencies](#Dependencies)
+  * [Files/Folders](#Files/Folders)
+  * [Current Version](#Current_Version)
+  * [Radon](#Radon)
+  * [Keybinds](#Keybinds)
+  * [License](#License)
+<!--ts-->
 
 
 ## Dependencies
@@ -18,7 +26,32 @@ Creates a random instance and saves it to a .txt file
   <li> second way to install pandas ( pip install pandas) </li>
 </ul>
 
-## KEYBINDS 
+## Files/Folders
+
+<ul>
+ <li> ./doc (documentation folder) </li>
+ <li> ./images (images folder) </li>
+ <li> TSP_GENERATOR.py(the main file) </li>
+ <li> tsp_generator keybinds.txt(keybinds file) </li>
+</ul>
+
+
+## Current_Version
+
+<p><img src ="images/tsp generator.png" title = "TSP Generator Version"/> </p>
+
+
+## Documentation
+
+All project documentation is located in the `./doc`  folder.
+
+## Radon
+<p><img src="images/TSP_GENERATOR RADON CC.png" title="TSP_GENERATOR RADON CC"/> </p>
+<p><img src="images/TSP_GENERATOR RADON HAL.png" title="TSP_GENERATOR RADON HAL"/></p>
+<p><img src="images/TSP_GENERATOR RADON MI.png" title="TSP_GENERATOR RADON MI"/></p>
+<p><img src="images/TSP_GENERATOR RADON RAW.png" title="TSP_GENERATOR RADON RAW"/></p>
+
+## Keybinds
 
 <ul>
 <li> Exit Alt + F4 </li>
@@ -27,16 +60,5 @@ Creates a random instance and saves it to a .txt file
 <li> Generate Ctrl + O </li>
 </ul>
 
-**Current Version**
-
-<p><img src ="images/tsp generator.png" title = "TSP Generator Version"/> </p>
-
-**Radon**
-<p><img src="images/TSP_GENERATOR RADON CC.png" title="TSP_GENERATOR RADON CC"/> </p>
-<p><img src="images/TSP_GENERATOR RADON HAL.png" title="TSP_GENERATOR RADON HAL"/></p>
-<p><img src="images/TSP_GENERATOR RADON MI.png" title="TSP_GENERATOR RADON MI"/></p>
-<p><img src="images/TSP_GENERATOR RADON RAW.png" title="TSP_GENERATOR RADON RAW"/></p>
-
-
-
-
+## License
+[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
