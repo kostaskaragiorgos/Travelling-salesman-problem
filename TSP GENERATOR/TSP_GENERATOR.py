@@ -52,11 +52,7 @@ def save_file(a):
     """ saves .txt file """
     filenamesave = filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
     if ".txt" in filenamesave:
-        with open(filenamesave, 'w') as f:
-            for i in range(len(a)):
-                for j in range(len(a)):
-                    f.write(str(a[i][j])+" ")
-                f.write("\n")
+        np.savetxt(filenamesave, a, fmt ='%1d', delimiter=' ')
         msg.showinfo("Success", "Success")
     else:
         msg.showerror("Abort", "Abort")
