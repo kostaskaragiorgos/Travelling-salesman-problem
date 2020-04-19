@@ -20,6 +20,10 @@ class TSP_SOLVER ():
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
         
+        self.show_menu = Menu(self.menu, tearoff=0)
+        self.show_menu.add_command(label='Instance Plot')
+        self.menu.add_cascade(label='Show', menu=self.show_menu)
+
         self.about_menu = Menu(self.menu,tearoff=0)
         self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=self.aboutmenu)
         self.menu.add_cascade(label="About", menu=self.about_menu)
