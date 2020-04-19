@@ -12,6 +12,10 @@ Creates a random instance and saves it to a .txt file
   * [Files/Folders](#Files/Folders)
   * [Current Version](#Current_Version)
   * [Radon](#Radon)
+    * [Radon cc](#Radon_cc)
+    * [Radon hal](#Radon_hal)
+    * [Radon mi](#Radon_mi)
+    * [Radon raw](#Radon_raw)
   * [Keybinds](#Keybinds)
   * [License](#License)
 <!--ts-->
@@ -46,9 +50,21 @@ Creates a random instance and saves it to a .txt file
 All project documentation is located in the `./doc`  folder.
 
 ## Radon
+
+### Radon_cc
+
 <p><img src="images/TSP_GENERATOR RADON CC.png" title="TSP_GENERATOR RADON CC"/> </p>
+
+### Radon_hal
+
 <p><img src="images/TSP_GENERATOR RADON HAL.png" title="TSP_GENERATOR RADON HAL"/></p>
+
+### Radon_mi
+
 <p><img src="images/TSP_GENERATOR RADON MI.png" title="TSP_GENERATOR RADON MI"/></p>
+
+### Radon_raw
+
 <p><img src="images/TSP_GENERATOR RADON RAW.png" title="TSP_GENERATOR RADON RAW"/></p>
 
 ## Keybinds
