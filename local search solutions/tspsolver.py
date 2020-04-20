@@ -47,7 +47,13 @@ class TSP_SOLVER ():
     def instanceplot(self):
         if self.filed == "":
             msg.showerror("ERROR", "NO FILE IMPORTED TO PLOT")
-    
+        else:
+            data = np.loadtxt(self.filed)
+            x = data[:,0]
+            y = data[:,1]
+            plt.scatter(x,y)
+            plt.show()
+
     def cf(self):
         if self.filed == "":
             msg.showerror("ERROR", "NO FILE IMPORTED TO CLOSE")
