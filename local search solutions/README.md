@@ -3,8 +3,9 @@
 ## Definition
 Given a list of nodes you need to find the best way to visit every node only once and return to the starting point with the lowest possible cost
 
-## FILES
+## Files/Folders
 <ul>
+    <li> images(images folder)
     <li> TSP GENERATOR.py(generates tsp problems) </li>
     <li> symmetric10nodesexample.txt (symmetric example) </li>
     <li> asymmetric10nodesexample.txt (asymmetric example) </li>
@@ -13,7 +14,6 @@ Given a list of nodes you need to find the best way to visit every node only onc
     <li> nearestneighbor.py(nearest neighbor methods ) </li>
     <li> fileparser.py (.txt file parser) </li>
     <li> 2-opt.py (2 opt methdos) </li>
-    <li> tsp generator.png(version file) </li>
     <li> tspsolver.py(nearest neighbor gui) </li>
 </ul>
 
