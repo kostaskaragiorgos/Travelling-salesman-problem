@@ -2,6 +2,7 @@ from tkinter import Menu, Button, StringVar, OptionMenu, messagebox as msg, file
 from nearestneighbor import *
 import pandas as pd 
 import numpy as np
+import matplotlib.pyplot as plt
 class TSP_SOLVER ():
     def __init__(self,master):
         self.master = master
@@ -21,7 +22,7 @@ class TSP_SOLVER ():
         self.menu.add_cascade(label="File", menu=self.file_menu)
         
         self.show_menu = Menu(self.menu, tearoff=0)
-        self.show_menu.add_command(label='Instance Plot')
+        self.show_menu.add_command(label='Instance Plot', command=self.instanceplot)
         self.menu.add_cascade(label='Show', menu=self.show_menu)
 
         self.about_menu = Menu(self.menu,tearoff=0)
@@ -42,6 +43,10 @@ class TSP_SOLVER ():
         
         self.binsert = Button(self.master, text="Insert a file", command=self.insertfile)
         self.binsert.pack()
+
+    def instanceplot(self):
+        if self.filed == "":
+            msg.showerror("ERROR", "NO FILE IMPORTED TO PLOT")
     
     def cf(self):
         if self.filed == "":
