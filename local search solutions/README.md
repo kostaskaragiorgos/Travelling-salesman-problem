@@ -1,38 +1,44 @@
-# Travelling-salesman-problem
+# Local search solutions
 
-## Definition
-Given a list of nodes you need to find the best way to visit every node only once and return to the starting point with the lowest possible cost
+
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/) [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+
+# Table of contents
+
+<!--ts-->
+  * [Local search solutions](#Local_search_solutions)
+  * [Table of contents](#Table_of_contents)
+  * [Files/Folders](#Files/Folders)
+  * [Dependencies](#Dependencies)
+  * [TSP SOLVER](#TSP_SOLVER)
+    * [TSP SOLVER KEYBINDS](#TSP_SOLVER_KEYBINDS)
+    * [TSP SOLVER Current Version](#TSP_SOLVER_Current_Version)
+  * [TSP SOLVER 2](#TSP_SOLVER_2)
+    * [TSP_SOLVER_2_KEYBINDS](#TSP_SOLVER_2_KEYBINDS)
+    * [TSP_SOLVER_2_Current_Version](#TSP_SOLVER_2_Current_Version)
+  * [License](#License)
+<!--te-->
+
 
 ## Files/Folders
 <ul>
-    <li> images(images folder)
-    <li> TSP GENERATOR.py(generates tsp problems) </li>
-    <li> symmetric10nodesexample.txt (symmetric example) </li>
-    <li> asymmetric10nodesexample.txt (asymmetric example) </li>
-    <li> swap.py (swap methods) </li>
-    <li> relocate.py(relocate methods) </li>
-    <li> nearestneighbor.py(nearest neighbor methods ) </li>
-    <li> fileparser.py (.txt file parser) </li>
-    <li> 2-opt.py (2 opt methdos) </li>
+    <li> images(images folder) </li>
+    <li> algorithms(algorithms folder) </li>
     <li> tspsolver.py(nearest neighbor gui) </li>
 </ul>
 
-
-
-# TSP SOLVER
-
-
 ## Dependencies
 
- <ul>
+<ul>
   <li> Numpy (conda install -c anaconda numpy) </li>
   <li> second way to install numpy( pip install numpy) </li>
   <li> Pandas (conda install -c anaconda pandas) </li>
   <li> second way to install pandas ( pip install pandas) </li>
 </ul>
 
+# TSP_SOLVER
 
-## KEYBINDS
+## TSP_SOLVER_KEYBINDS
 
 <ul>
 <li> Insert a file Ctrl + O </li>
@@ -44,24 +50,14 @@ Given a list of nodes you need to find the best way to visit every node only onc
 </ul>
   
 
-**Current Version**
+## TSP_SOLVER_Current_Version
 
 <p><img src ="images/tsp solver.png" title = "TSP Solver Version"/> </p>
 
 
-# TSP SOLVER 2
+# TSP_SOLVER_2
 
-## Dependencies
-
- <ul>
-  <li> Numpy (conda install -c anaconda numpy) </li>
-  <li> second way to install numpy( pip install numpy) </li>
-  <li> Pandas (conda install -c anaconda pandas) </li>
-  <li> second way to install pandas ( pip install pandas) </li>
-</ul>
-
-
-## KEYBINDS
+## TSP_SOLVER_2_KEYBINDS
 
 <ul>
 <li> Insert a file Ctrl + O </li>
@@ -72,6 +68,10 @@ Given a list of nodes you need to find the best way to visit every node only onc
 <li> Generate Ctrl + O </li>
 </ul>
 
-**Current Version**
+## TSP_SOLVER_2_Current_Version
 
-<p><img src ="images/tsp solver 2.png" title = "TSP Solver 2 Version"/> </p>
+<p><img src ="images/TSP SOLVER 2.png" title = "TSP Solver 2 Version"/> </p>
+
+
+## License
+[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
