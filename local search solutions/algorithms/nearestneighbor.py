@@ -3,7 +3,7 @@ Nearest Neighbor
 """
 import numpy as np
 import pandas as pd
-from fileparser import fileparser
+
 def findmin(table, node):
     return int(table[node].min()), int(table[node].idxmin())
 def visitcheck(totalscore, table, number, visited_nodes, current_node, pos_of_min, minofthetable):

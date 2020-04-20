@@ -1,13 +1,11 @@
-from tkinter import Tk, Menu, OptionMenu, Button, StringVar, Label, Text
+from tkinter import Tk, Menu, OptionMenu, Button, StringVar, Label, Text, END
 from tkinter import messagebox as msg
 from tkinter import filedialog
-from nearestneighbor import *
-from _2_opt import partial_reverse, _2optf
-from swap import swap ,swapPositions
-from relocate import *
 import pandas as pd 
 import numpy as np
 import matplotlib.pyplot as plt
+from algorithms.nearestneighbor import findmin, visitcheck, nearserN
+from algorithms.fileparser import fileparser
 class TSP_SOLVER2 ():
     def __init__(self,master):
         self.master = master

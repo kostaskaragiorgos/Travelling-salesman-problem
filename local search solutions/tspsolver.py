@@ -1,5 +1,6 @@
 from tkinter import Menu, Button, StringVar, OptionMenu, messagebox as msg, filedialog, Tk
-from nearestneighbor import *
+from algorithms.nearestneighbor import findmin, visitcheck, nearserN
+from algorithms.fileparser import fileparser
 import pandas as pd 
 import numpy as np
 import matplotlib.pyplot as plt
