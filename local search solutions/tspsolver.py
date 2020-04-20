@@ -45,6 +45,7 @@ class TSP_SOLVER ():
         self.binsert.pack()
 
     def instanceplot(self):
+        """ plots the instance"""
         if self.filed == "":
             msg.showerror("ERROR", "NO FILE IMPORTED TO PLOT")
         else:
