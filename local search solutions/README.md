@@ -13,6 +13,11 @@
   * [TSP SOLVER](#TSP_SOLVER)
     * [TSP SOLVER KEYBINDS](#TSP_SOLVER_KEYBINDS)
     * [TSP SOLVER Current Version](#TSP_SOLVER_Current_Version)
+    * [TSP SOLVER Radon](#TSP_SOLVER_Radon)
+      * [TSP SOLVER Radon cc](#TSP_SOLVER_Radon_cc)
+      * [TSP SOLVER Radon hal](#TSP_SOLVER_Radon_hal)
+      * [TSP SOLVER Radon mi](#TSP_SOLVER_Radon_mi)
+      * [TSP SOLVER Radon raw](#TSP_SOLVER_Radon_raw)
   * [TSP SOLVER 2](#TSP_SOLVER_2)
     * [TSP_SOLVER_2_KEYBINDS](#TSP_SOLVER_2_KEYBINDS)
     * [TSP_SOLVER_2_Current_Version](#TSP_SOLVER_2_Current_Version)
@@ -54,6 +59,23 @@
 
 <p><img src ="images/tsp solver.png" title = "TSP Solver Version"/> </p>
 
+## TSP_SOLVER_Radon
+
+### TSP_SOLVER_Radon_cc
+
+<p><img src ="images/tspsolver radon cc.png" title = "TSP Solver Radon cc"/></p>
+
+### TSP_SOLVER_Radon_hal
+
+<p><img src ="images/tspsolver radon hal.png" title = "TSP Solver Radon hal"/></p>
+
+### TSP_SOLVER_Radon_mi
+
+<p><img src ="images/tspsolver radon mi.png" title = "TSP Solver Radon mi"/></p>
+
+### TSP_SOLVER_Radon_raw
+
+<p><img src ="images/tspsolver radon raw.png" title = "TSP Solver Radon mi"/></p>
 
 # TSP_SOLVER_2
 
