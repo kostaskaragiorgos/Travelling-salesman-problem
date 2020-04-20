@@ -7,8 +7,8 @@ from swap import swap ,swapPositions
 from relocate import *
 import pandas as pd 
 import numpy as np
+import matplotlib.pyplot as plt
 class TSP_SOLVER2 ():
-    
     def __init__(self,master):
         self.master = master
         self.master.title("TSP_SOLVER 2")
@@ -23,6 +23,9 @@ class TSP_SOLVER2 ():
         self.file_menu.add_command(label="Close file", accelerator="Ctrl+F5", command=self.cf)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
+        self.show_menu = Menu(self.menu, tearoff=0)
+        self.show_menu.add_command(label='Instance Plot', command=self.instanceplot)
+        self.menu.add_cascade(label='Show', menu=self.show_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
         self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=self.aboutmenu)
         self.menu.add_cascade(label="About", menu=self.about_menu)
@@ -50,6 +53,16 @@ class TSP_SOLVER2 ():
     def exitmenu(self):
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
+    def instanceplot(self):
+        """ plots the instance"""
+        if self.filed == "":
+            msg.showerror("ERROR", "NO FILE IMPORTED TO PLOT")
+        else:
+            data = np.loadtxt(self.filed)
+            x = data[:,0]
+            y = data[:,1]
+            plt.scatter(x,y)
+            plt.show()
     def cf(self):
         """ closes the file """ 
         if self.filed  == "":
