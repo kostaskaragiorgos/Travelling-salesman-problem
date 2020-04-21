@@ -1,5 +1,4 @@
 from random import randint
-from nearestneighbor import findmin, visitcheck, nearserN
 import numpy as np
 
 def partial_reverse(list_, from_, to):

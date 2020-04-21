@@ -1,5 +1,4 @@
 from random import randint
-from nearestneighbor import findmin, visitcheck, nearserN
 import numpy as np
 
 def relocate(array ,pos_to_move , pos_where_to_be):
