@@ -19,8 +19,13 @@
       * [TSP SOLVER Radon mi](#TSP_SOLVER_Radon_mi)
       * [TSP SOLVER Radon raw](#TSP_SOLVER_Radon_raw)
   * [TSP SOLVER 2](#TSP_SOLVER_2)
-    * [TSP_SOLVER_2_KEYBINDS](#TSP_SOLVER_2_KEYBINDS)
-    * [TSP_SOLVER_2_Current_Version](#TSP_SOLVER_2_Current_Version)
+    * [TSP SOLVER 2 KEYBINDS](#TSP_SOLVER_2_KEYBINDS)
+    * [TSP SOLVER 2 Current_Version](#TSP_SOLVER_2_Current_Version)
+    * [TSP SOLVER 2 Radon](#TSP_SOLVER_2_Radon)
+      * [TSP SOLVER 2 Radon cc](#TSP_SOLVER_2_Radon_cc)
+      * [TSP SOLVER 2 Radon hal](#TSP_SOLVER_2_Radon_hal)
+      * [TSP SOLVER 2 Radon mi](#TSP_SOLVER_2_Radon_mi)
+      * [TSP SOLVER 2 Radon raw](#TSP_SOLVER_2_Radon_raw)
   * [License](#License)
 <!--te-->
 
@@ -94,6 +99,23 @@
 
 <p><img src ="images/TSP SOLVER 2.png" title = "TSP Solver 2 Version"/> </p>
 
+## TSP_SOLVER_2_Radon
+
+### TSP_SOLVER_2_Radon_cc
+
+<p><img src ="images/tsp solver 2 radon cc.png" title = "TSP Solver Radon cc"/></p>
+
+### TSP_SOLVER_2_Radon_hal
+
+<p><img src ="images/tsp solver 2 radon hal.png" title = "TSP Solver Radon hal"/></p>
+
+### TSP_SOLVER_2_Radon_mi
+
+<p><img src ="images/tsp solver 2 radon mi.png" title = "TSP Solver Radon mi"/></p>
+
+### TSP_SOLVER_2_Radon_raw
+
+<p><img src ="images/tsp solver 2 radon raw.png" title = "TSP Solver Radon mi"/></p>
 
 ## License
 [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
