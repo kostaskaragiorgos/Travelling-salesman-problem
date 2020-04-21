@@ -4,8 +4,11 @@ from tkinter import filedialog
 import pandas as pd 
 import numpy as np
 import matplotlib.pyplot as plt
-from algorithms.nearestneighbor import findmin, visitcheck, nearserN
+from algorithms.nearestneighbor import nearserN
 from algorithms.fileparser import fileparser
+from algorithms.relocate import relocatef
+from algorithms.swap import swap
+from algorithms._2_opt import _2optf
 class TSP_SOLVER2 ():
     def __init__(self,master):
         self.master = master
@@ -93,6 +96,19 @@ class TSP_SOLVER2 ():
         msg.showinfo("Help", "A TSP SOLVER")
     def aboutmenu(self):
         msg.showinfo("About", "Version 1.0")
+    def algouse(self, tries,visited_nodes, totalscore):
+        if self.varnumset.get() == "2-opt":
+            current_route, current_score = _2optf(visited_nodes, totalscore, tries, self.table, self.number)
+            msg.showinfo("SUCCESS", "THE ROUTE USING 2-OPT:"+str(current_route)+"WITH SCORE:"+str(current_score))
+            self.textt.delete(1.0, END)
+        elif self.varnumset.get() == "Relocate":
+            current_route, current_score = relocatef(visited_nodes, totalscore, tries, self.table, self.number)
+            msg.showinfo("SUCCESS", "THE ROUTE USING RELOCATE :"+str(current_route)+"WITH SCORE:"+str(current_score))
+            self.textt.delete(1.0, END)
+        else:
+            current_route, current_score = swap(visited_nodes, totalscore, tries, self.table, self.number)
+            msg.showinfo("SUCCESS", "THE ROUTE USING SWAP :"+str(current_route)+"WITH SCORE:"+str(current_score))
+            self.textt.delete(1.0, END)
     def solve(self):
         """ solves the problem """
         if self.filed  == "":
@@ -101,23 +117,11 @@ class TSP_SOLVER2 ():
             visited_nodes, totalscore = nearserN(self.table, self.number, self.varnumnode.get()) 
             try:
                 if int(self.textt.get(1.0, END)) > 0:
-                    tries = int(self.textt.get(1.0, END))
-                    if self.varnumset.get() == "2-opt":
-                        current_route, current_score = _2optf(visited_nodes, totalscore, tries, self.table, self.number)
-                        msg.showinfo("SUCCESS", "THE ROUTE USING 2-OPT:"+str(current_route)+"WITH SCORE:"+str(current_score))
-                        self.textt.delete(1.0, END)
-                    elif self.varnumset.get() == "Relocate":
-                        current_route, current_score = relocatef(visited_nodes, totalscore, tries, self.table, self.number)
-                        msg.showinfo("SUCCESS", "THE ROUTE USING RELOCATE :"+str(current_route)+"WITH SCORE:"+str(current_score))
-                        self.textt.delete(1.0, END)
-                    else:
-                        current_route, current_score = swap(visited_nodes, totalscore, tries, self.table, self.number)
-                        msg.showinfo("SUCCESS", "THE ROUTE USING SWAP :"+str(current_route)+"WITH SCORE:"+str(current_score))
-                        self.textt.delete(1.0, END)
+                    self.algouse(int(self.textt.get(1.0, END)), visited_nodes, totalscore)
                 else:
                     msg.showerror("Value Error", "Enter a number higher than zero")
                     self.textt.delete(1.0, END)
-            except:
+            except ValueError:
                 msg.showerror("Value Error", "Enter a number higher than zero")
                 self.textt.delete(1.0, END)
 def main():
