@@ -35,6 +35,7 @@
     <li> images(images folder) </li>
     <li> algorithms(algorithms folder) </li>
     <li> tspsolver.py(nearest neighbor gui) </li>
+    <li> tsp_solver2.py(tsp solver) </li>
 </ul>
 
 ## Dependencies
