@@ -111,7 +111,7 @@ class TSP_GENERATOR():
                 save_file(a)
             else:
                 msg.showerror("Value Error", "Enter a number higher than four")
-        except:
+        except ValueError:
             msg.showerror("Value Error", "Enter a number higher than four")
             self.text.delete(1.0, END)    
 def main():

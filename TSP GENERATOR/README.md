@@ -11,6 +11,7 @@ Creates a random instance and saves it to a .txt file
   * [Dependencies](#Dependencies)
   * [Files/Folders](#Files/Folders)
   * [Current Version](#Current_Version)
+  * [Documentation](#Documentation)
   * [Radon](#Radon)
     * [Radon cc](#Radon_cc)
     * [Radon hal](#Radon_hal)
@@ -70,10 +71,11 @@ All project documentation is located in the `./doc`  folder.
 ## Keybinds
 
 <ul>
-<li> Exit Alt + F4 </li>
-<li> About Ctrl + I </li>
-<li> Help Ctrl + F1 </li>
-<li> Generate Ctrl + O </li>
+  <li> Generate Ctrl + O </li>
+  <li> Exit Alt + F4 </li>
+  <li> About Ctrl + I </li>
+  <li> Help Ctrl + F1 </li>
+
 </ul>
 
 ## License
