@@ -83,16 +83,20 @@ class TSP_SOLVER():
                                                     filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
           
             if ".txt" in self.filed:
-                self.table, self.number = fileparser(self.filed)
-                msg.showinfo("SUCCESS", "THE FILE SUCCESSFULLY INSERTED \nNumber of nodes:" + str(len(self.number)))
-                nodelist = list(self.number)
-                self.varnumnode = StringVar(self.master)
-                self.varnumnode.set(nodelist[0])
-                self.popupsetmenu = OptionMenu(self.master, self.varnumnode, *nodelist)
-                self.popupsetmenu.pack()
+                try:
+                    self.table, self.number = fileparser(self.filed)   
+                    msg.showinfo("SUCCESS", "THE FILE SUCCESSFULLY INSERTED \nNumber of nodes:" + str(len(self.number)))
+                    nodelist = list(self.number)
+                    self.varnumnode = StringVar(self.master)
+                    self.varnumnode.set(nodelist[0])
+                    self.popupsetmenu = OptionMenu(self.master, self.varnumnode, *nodelist)
+                    self.popupsetmenu.pack()
             
-                self.solvb = Button(self.master, text="Solve", command=self.solve)
-                self.solvb.pack()
+                    self.solvb = Button(self.master, text="Solve", command=self.solve)
+                    self.solvb.pack()
+                except ValueError:
+                    msg.showerror("ERROR","NO TSP INSTANCE INSERTED")
+                    self.filed = ""
             else:
                 msg.showerror("Error", "NO TXT FILE ADDED")
         else:
