@@ -73,26 +73,29 @@ class TSP_SOLVER2 ():
             self.popupsetmenu.forget()
             self.solvb.forget()
             msg.showinfo("FILE CLOSED", "SUCCESS") #CHANGE THE MESSAGE 
+    def file_verification(self):
+        try:
+            self.table,self.number = fileparser(self.filed)
+            msg.showinfo("SUCCESS" , "THE FILE SUCCESSFULLY INSERTED \nNumber of nodes:" + str(len(self.number)))
+            self.nodelist = list(self.number)
+            self.varnumnode = StringVar(self.master)
+            self.varnumnode.set(self.nodelist[0])
+            self.popupsetmenu = OptionMenu(self.master, self.varnumnode, *self.nodelist)
+            self.popupsetmenu.pack()
+            self.solvb = Button(self.master, text="Solve", command=self.solve)
+            self.solvb.pack()
+        except ValueError:
+            msg.showerror("ERROR", "NO TSP INSTANCE INSERTED")
+            self.filed = ""
+
+
     def insertfile(self):
         """ user inserts a .txt file (problem instance ) """
         if self.filed == "":
             self.filed = filedialog.askopenfilename(initialdir="/", title="Select txt file",
                                                    filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
             if ".txt" in self.filed:
-                try:
-                    self.table,self.number = fileparser(self.filed)
-                    msg.showinfo("SUCCESS" , "THE FILE SUCCESSFULLY INSERTED \nNumber of nodes:" + str(len(self.number)))
-                    self.nodelist = list(self.number)
-                    self.varnumnode = StringVar(self.master)
-                    self.varnumnode.set(self.nodelist[0])
-                    self.popupsetmenu = OptionMenu(self.master, self.varnumnode, *self.nodelist)
-                    self.popupsetmenu.pack()
-                    self.solvb = Button(self.master, text="Solve", command=self.solve)
-                    self.solvb.pack()
-                except ValueError:
-                    msg.showerror("ERROR", "NO TSP INSTANCE INSERTED")
-                    self.filed = ""
-
+                self.file_verification()
             else:
                 msg.showerror("Error", "NO TXT FILE ADDED")
         else:
