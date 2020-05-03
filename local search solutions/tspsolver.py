@@ -1,3 +1,4 @@
+""" TSP SOLVER """
 from tkinter import Menu, Button, StringVar, OptionMenu, messagebox as msg, filedialog, Tk
 import numpy as np
 import matplotlib.pyplot as plt
@@ -13,6 +14,7 @@ def aboutmenu():
     msg.showinfo("About", "Version 1.0")
 
 class TSP_SOLVER():
+    """ TSP SOLVER CLASS """
     def __init__(self, master):
         self.master = master
         self.master.title("TSP_SOLVER")
@@ -65,6 +67,7 @@ class TSP_SOLVER():
             plt.show()
 
     def cf(self):
+        """ closes the .txt file """
         if self.filed == "":
             msg.showerror("ERROR", "NO FILE IMPORTED TO CLOSE")
         else:
@@ -73,6 +76,7 @@ class TSP_SOLVER():
             self.solvb.forget()
             msg.showinfo("SUCCESS", "FILE CLOSED")
     def exitmenu(self):
+        """ exit """
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
     
@@ -95,7 +99,7 @@ class TSP_SOLVER():
                     self.solvb = Button(self.master, text="Solve", command=self.solve)
                     self.solvb.pack()
                 except ValueError:
-                    msg.showerror("ERROR","NO TSP INSTANCE INSERTED")
+                    msg.showerror("ERROR", "NO TSP INSTANCE INSERTED")
                     self.filed = ""
             else:
                 msg.showerror("Error", "NO TXT FILE ADDED")
