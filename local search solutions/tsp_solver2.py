@@ -73,17 +73,19 @@ class TSP_SOLVER2 ():
             self.popupsetmenu.forget()
             self.solvb.forget()
             msg.showinfo("FILE CLOSED", "SUCCESS") #CHANGE THE MESSAGE 
+    def file_verification_gui(self):
+        self.nodelist = list(self.number)
+        self.varnumnode = StringVar(self.master)
+        self.varnumnode.set(self.nodelist[0])
+        self.popupsetmenu = OptionMenu(self.master, self.varnumnode, *self.nodelist)
+        self.popupsetmenu.pack()
+        self.solvb = Button(self.master, text="Solve", command=self.solve)
+        self.solvb.pack()
     def file_verification(self):
         try:
             self.table,self.number = fileparser(self.filed)
+            self.file_verification_gui()
             msg.showinfo("SUCCESS" , "THE FILE SUCCESSFULLY INSERTED \nNumber of nodes:" + str(len(self.number)))
-            self.nodelist = list(self.number)
-            self.varnumnode = StringVar(self.master)
-            self.varnumnode.set(self.nodelist[0])
-            self.popupsetmenu = OptionMenu(self.master, self.varnumnode, *self.nodelist)
-            self.popupsetmenu.pack()
-            self.solvb = Button(self.master, text="Solve", command=self.solve)
-            self.solvb.pack()
         except ValueError:
             msg.showerror("ERROR", "NO TSP INSTANCE INSERTED")
             self.filed = ""
