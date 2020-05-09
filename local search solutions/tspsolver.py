@@ -80,6 +80,16 @@ class TSP_SOLVER():
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
     
+    def file_verification_gui(self):
+        nodelist = list(self.number)
+        self.varnumnode = StringVar(self.master)
+        self.varnumnode.set(nodelist[0])
+        self.popupsetmenu = OptionMenu(self.master, self.varnumnode, *nodelist)
+        self.popupsetmenu.pack()
+
+        self.solvb = Button(self.master, text="Solve", command=self.solve)
+        self.solvb.pack()
+
     def insertfile(self):
         """ user inserts a .txt file (problem instance ) """
         if self.filed == "":
@@ -88,16 +98,9 @@ class TSP_SOLVER():
           
             if ".txt" in self.filed:
                 try:
-                    self.table, self.number = fileparser(self.filed)   
+                    self.table, self.number = fileparser(self.filed)
+                    self.file_verification_gui()
                     msg.showinfo("SUCCESS", "THE FILE SUCCESSFULLY INSERTED \nNumber of nodes:" + str(len(self.number)))
-                    nodelist = list(self.number)
-                    self.varnumnode = StringVar(self.master)
-                    self.varnumnode.set(nodelist[0])
-                    self.popupsetmenu = OptionMenu(self.master, self.varnumnode, *nodelist)
-                    self.popupsetmenu.pack()
-            
-                    self.solvb = Button(self.master, text="Solve", command=self.solve)
-                    self.solvb.pack()
                 except ValueError:
                     msg.showerror("ERROR", "NO TSP INSTANCE INSERTED")
                     self.filed = ""
