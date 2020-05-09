@@ -89,23 +89,23 @@ class TSP_SOLVER():
 
         self.solvb = Button(self.master, text="Solve", command=self.solve)
         self.solvb.pack()
-
+    def file_verification(self):
+        if ".txt" in self.filed:
+            try:
+                self.table, self.number = fileparser(self.filed)
+                self.file_verification_gui()
+                msg.showinfo("SUCCESS", "THE FILE SUCCESSFULLY INSERTED \nNumber of nodes:" + str(len(self.number)))
+            except ValueError:
+                msg.showerror("ERROR", "NO TSP INSTANCE INSERTED")
+                self.filed = ""
+        else:
+            msg.showerror("Error", "NO TXT FILE ADDED")
     def insertfile(self):
         """ user inserts a .txt file (problem instance ) """
         if self.filed == "":
             self.filed = filedialog.askopenfilename(initialdir="/", title="Select txt file",
                                                     filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
-          
-            if ".txt" in self.filed:
-                try:
-                    self.table, self.number = fileparser(self.filed)
-                    self.file_verification_gui()
-                    msg.showinfo("SUCCESS", "THE FILE SUCCESSFULLY INSERTED \nNumber of nodes:" + str(len(self.number)))
-                except ValueError:
-                    msg.showerror("ERROR", "NO TSP INSTANCE INSERTED")
-                    self.filed = ""
-            else:
-                msg.showerror("Error", "NO TXT FILE ADDED")
+            self.file_verification()
         else:
             msg.showerror("ERROR", "YOU NEED TO CLOSE THE FILE")
                 
