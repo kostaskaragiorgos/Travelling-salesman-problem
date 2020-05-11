@@ -1,7 +1,6 @@
 from tkinter import Tk, Menu, OptionMenu, Button, StringVar, Label, Text, END
 from tkinter import messagebox as msg
 from tkinter import filedialog
-import pandas as pd 
 import numpy as np
 import matplotlib.pyplot as plt
 from algorithms.nearestneighbor import nearserN
@@ -9,8 +8,8 @@ from algorithms.fileparser import fileparser
 from algorithms.relocate import relocatef
 from algorithms.swap import swap
 from algorithms._2_opt import _2optf
-class TSP_SOLVER2 ():
-    def __init__(self,master):
+class TSP_SOLVER2():
+    def __init__(self, master):
         self.master = master
         self.master.title("TSP_SOLVER 2")
         self.master.geometry("250x200")
@@ -60,13 +59,13 @@ class TSP_SOLVER2 ():
             msg.showerror("ERROR", "NO FILE IMPORTED TO PLOT")
         else:
             data = np.loadtxt(self.filed)
-            x = data[:,0]
-            y = data[:,1]
-            plt.scatter(x,y)
+            x = data[:, 0]
+            y = data[:, 1]
+            plt.scatter(x, y)
             plt.show()
     def cf(self):
         """ closes the file """ 
-        if self.filed  == "":
+        if self.filed == "":
             msg.showerror("NO FILE", "NO FILE TO CLOSE")
         else:
             self.filed = ""
@@ -83,9 +82,9 @@ class TSP_SOLVER2 ():
         self.solvb.pack()
     def file_verification(self):
         try:
-            self.table,self.number = fileparser(self.filed)
+            self.table, self.number = fileparser(self.filed)
             self.file_verification_gui()
-            msg.showinfo("SUCCESS" , "THE FILE SUCCESSFULLY INSERTED \nNumber of nodes:" + str(len(self.number)))
+            msg.showinfo("SUCCESS", "THE FILE SUCCESSFULLY INSERTED \nNumber of nodes:" + str(len(self.number)))
         except ValueError:
             msg.showerror("ERROR", "NO TSP INSTANCE INSERTED")
             self.filed = ""
@@ -95,7 +94,7 @@ class TSP_SOLVER2 ():
         """ user inserts a .txt file (problem instance ) """
         if self.filed == "":
             self.filed = filedialog.askopenfilename(initialdir="/", title="Select txt file",
-                                                   filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
+                                                    filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
             if ".txt" in self.filed:
                 self.file_verification()
             else:
@@ -106,7 +105,7 @@ class TSP_SOLVER2 ():
         msg.showinfo("Help", "A TSP SOLVER")
     def aboutmenu(self):
         msg.showinfo("About", "Version 1.0")
-    def algouse(self, tries,visited_nodes, totalscore):
+    def algouse(self, tries, visited_nodes, totalscore):
         if self.varnumset.get() == "2-opt":
             current_route, current_score = _2optf(visited_nodes, totalscore, tries, self.table, self.number)
             msg.showinfo("SUCCESS", "THE ROUTE USING 2-OPT:"+str(current_route)+"WITH SCORE:"+str(current_score))
@@ -119,7 +118,7 @@ class TSP_SOLVER2 ():
         self.textt.delete(1.0, END)
     def solve(self):
         """ solves the problem """
-        if self.filed  == "":
+        if self.filed == "":
             msg.showinfo("Import", "You need to import a .txt file")
         else:
             visited_nodes, totalscore = nearserN(self.table, self.number, self.varnumnode.get()) 
@@ -134,8 +133,8 @@ class TSP_SOLVER2 ():
                 self.textt.delete(1.0, END)
 def main():
     """ main function """
-    root=Tk()
+    root = Tk()
     TSP_SOLVER2(root)
     root.mainloop()
-if __name__=='__main__':
+if __name__ == '__main__':
     main()
