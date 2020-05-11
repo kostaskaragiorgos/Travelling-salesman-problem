@@ -34,6 +34,13 @@ def asymmetric_table(self):
             else:
                 a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
     return a
+def fpart(a):
+    """ final part of a symetric table """
+    for i in range(len(a)):
+        for j in range(len(a)):
+            if i < j:
+                a[[i], [j]] = a[[j], [i]]
+
 def symmetric_table(self):
     """ creates a symmetric table """
     a = np.ones((int(self.text.get(1.0, END)), int(self.text.get(1.0, END))))
@@ -43,10 +50,7 @@ def symmetric_table(self):
                 a[[i], [j]] = 0
             elif i > j:
                 a[[i], [j]] = rd.randint(self.startingvalue, self.endingvalue)
-    for i in range(len(a)):
-        for j in range(len(a)):
-            if i < j:
-                a[[i], [j]] = a[[j], [i]]
+    fpart(a)
     return a
 def save_file(a):
     """ saves .txt file """
