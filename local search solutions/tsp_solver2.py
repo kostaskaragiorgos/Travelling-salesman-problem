@@ -108,13 +108,11 @@ class TSP_SOLVER2():
     def algouse(self, tries, visited_nodes, totalscore):
         if self.varnumset.get() == "2-opt":
             current_route, current_score = _2optf(visited_nodes, totalscore, tries, self.table, self.number)
-            msg.showinfo("SUCCESS", "THE ROUTE USING 2-OPT:"+str(current_route)+"WITH SCORE:"+str(current_score))
         elif self.varnumset.get() == "Relocate":
             current_route, current_score = relocatef(visited_nodes, totalscore, tries, self.table, self.number)
-            msg.showinfo("SUCCESS", "THE ROUTE USING RELOCATE :"+str(current_route)+"WITH SCORE:"+str(current_score))
         else:
             current_route, current_score = swap(visited_nodes, totalscore, tries, self.table, self.number)
-            msg.showinfo("SUCCESS", "THE ROUTE USING SWAP :"+str(current_route)+"WITH SCORE:"+str(current_score))
+        msg.showinfo("SUCCESS", "THE ROUTE USING "+self.varnumset.get()+" :"+str(current_route)+"WITH SCORE:"+str(current_score))
         self.textt.delete(1.0, END)
     def solve(self):
         """ solves the problem """
