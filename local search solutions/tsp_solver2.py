@@ -89,16 +89,17 @@ class TSP_SOLVER2():
             msg.showerror("ERROR", "NO TSP INSTANCE INSERTED")
             self.filed = ""
 
-
+    def checkinsertedfiletype(self):
+        if ".txt" in self.filed:
+            self.file_verification()
+        else:
+            msg.showerror("Error", "NO TXT FILE ADDED")
     def insertfile(self):
         """ user inserts a .txt file (problem instance ) """
         if self.filed == "":
             self.filed = filedialog.askopenfilename(initialdir="/", title="Select txt file",
                                                     filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
-            if ".txt" in self.filed:
-                self.file_verification()
-            else:
-                msg.showerror("Error", "NO TXT FILE ADDED")
+            self.checkinsertedfiletype()
         else:
             msg.showerror("ERROR", "YOU NEED TO CLOSE THE FILE")
     def helpmenu(self):
