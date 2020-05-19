@@ -115,21 +115,23 @@ class TSP_SOLVER2():
             current_route, current_score = swap(visited_nodes, totalscore, tries, self.table, self.number)
         msg.showinfo("SUCCESS", "THE ROUTE USING "+self.varnumset.get()+" :"+str(current_route)+"WITH SCORE:"+str(current_score))
         self.textt.delete(1.0, END)
+    def check_tries(self, visited_nodes, totalscore):
+        try:
+            if int(self.textt.get(1.0, END)) > 0:
+                self.algouse(int(self.textt.get(1.0, END)), visited_nodes, totalscore)
+            else:
+                msg.showerror("Value Error", "Enter a number higher than zero")
+                self.textt.delete(1.0, END)
+        except ValueError:
+            msg.showerror("Value Error", "Enter a number higher than zero")
+            self.textt.delete(1.0, END)
     def solve(self):
         """ solves the problem """
         if self.filed == "":
             msg.showinfo("Import", "You need to import a .txt file")
         else:
-            visited_nodes, totalscore = nearserN(self.table, self.number, self.varnumnode.get()) 
-            try:
-                if int(self.textt.get(1.0, END)) > 0:
-                    self.algouse(int(self.textt.get(1.0, END)), visited_nodes, totalscore)
-                else:
-                    msg.showerror("Value Error", "Enter a number higher than zero")
-                    self.textt.delete(1.0, END)
-            except ValueError:
-                msg.showerror("Value Error", "Enter a number higher than zero")
-                self.textt.delete(1.0, END)
+            visited_nodes, totalscore = nearserN(self.table, self.number, self.varnumnode.get())
+            self.check_tries(visited_nodes, totalscore)
 def main():
     """ main function """
     root = Tk()
