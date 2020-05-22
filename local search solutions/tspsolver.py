@@ -8,12 +8,12 @@ from algorithms.fileparser import fileparser
 def helpmenu():
     """ help menu """
     msg.showinfo("Help", "A TSP SOLVER")
-    
+
 def aboutmenu():
     """ about menu """
     msg.showinfo("About", "Version 1.0")
 
-class TSP_SOLVER():
+class TspSolver():
     """ TSP SOLVER CLASS """
     def __init__(self, master):
         self.master = master
@@ -24,9 +24,9 @@ class TSP_SOLVER():
 
         #menu
         self.menu = Menu(self.master)
-        
         self.file_menu = Menu(self.menu, tearoff=0)
-        self.file_menu.add_command(label="Insert a file", accelerator='Ctrl+O', command=self.insertfile)
+        self.file_menu.add_command(label="Insert a file",
+                                   accelerator='Ctrl+O', command=self.insertfile)
         self.file_menu.add_command(label="Solve", accelerator='Alt+F5', command=self.solve)
         self.file_menu.add_command(label="Close file", accelerator="Ctrl+F5", command=self.cf)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
@@ -81,6 +81,7 @@ class TSP_SOLVER():
             self.master.destroy()
     
     def file_verification_gui(self):
+        """ inserted gui after verification """
         nodelist = list(self.number)
         self.varnumnode = StringVar(self.master)
         self.varnumnode.set(nodelist[0])
@@ -90,11 +91,14 @@ class TSP_SOLVER():
         self.solvb = Button(self.master, text="Solve", command=self.solve)
         self.solvb.pack()
     def file_verification(self):
+        """ verifies that the inserted file is a tsp instance """
         if ".txt" in self.filed:
             try:
                 self.table, self.number = fileparser(self.filed)
                 self.file_verification_gui()
-                msg.showinfo("SUCCESS", "THE FILE SUCCESSFULLY INSERTED \nNumber of nodes:" + str(len(self.number)))
+                msg.showinfo("SUCCESS",
+                             "THE FILE SUCCESSFULLY INSERTED \nNumber of nodes:"
+                             + str(len(self.number)))
             except ValueError:
                 msg.showerror("ERROR", "NO TSP INSTANCE INSERTED")
                 self.filed = ""
@@ -104,7 +108,8 @@ class TSP_SOLVER():
         """ user inserts a .txt file (problem instance ) """
         if self.filed == "":
             self.filed = filedialog.askopenfilename(initialdir="/", title="Select txt file",
-                                                    filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
+                                                    filetypes=(("txt files", "*.txt"),
+                                                               ("all files", "*.*")))
             self.file_verification()
         else:
             msg.showerror("ERROR", "YOU NEED TO CLOSE THE FILE")
@@ -116,12 +121,14 @@ class TSP_SOLVER():
             msg.showinfo("Import", "You need to import a .txt file")
         else:
             visited_nodes, totalscore = nearserN(self.table, self.number, self.varnumnode.get()) 
-            msg.showinfo("SUCCESS", "THE ROUTE USING NEAREST NEIGHBOR"+str(visited_nodes)+"with score:"+str(totalscore))
+            msg.showinfo("SUCCESS",
+                         "THE ROUTE USING NEAREST NEIGHBOR"
+                         +str(visited_nodes)+"with score:"+str(totalscore))
     
 def main():
     """ main function """
     root = Tk()
-    TSP_SOLVER(root)
+    TspSolver(root)
     root.mainloop()
     
 if __name__ == '__main__':
