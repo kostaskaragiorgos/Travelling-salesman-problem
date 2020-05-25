@@ -1,3 +1,4 @@
+""" tsp solver """
 from tkinter import Tk, Menu, OptionMenu, Button, StringVar, Label, Text, END
 from tkinter import messagebox as msg
 from tkinter import filedialog
@@ -8,7 +9,14 @@ from algorithms.fileparser import fileparser
 from algorithms.relocate import relocatef
 from algorithms.swap import swap
 from algorithms._2_opt import _2optf
+def helpmenu():
+    """ help menu function """
+    msg.showinfo("Help", "A TSP SOLVER")
+def aboutmenu():
+    """ about menu function """
+    msg.showinfo("About", "Version 1.0")
 class TSP_SOLVER2():
+    """ tsp solver class"""
     def __init__(self, master):
         self.master = master
         self.master.title("TSP_SOLVER 2")
@@ -19,7 +27,8 @@ class TSP_SOLVER2():
         self.menu = Menu(self.master)
         self.file_menu = Menu(self.menu, tearoff=0)
         self.file_menu.add_command(label="Insert a file", accelerator='Ctrl+O', command=self.insertfile)
-        self.file_menu.add_command(label="Solve", accelerator='Alt+F5', command=self.solve)
+        self.file_menu.add_command(label="Solve",
+                                   accelerator='Alt+F5', command=self.solve)
         self.file_menu.add_command(label="Close file", accelerator="Ctrl+F5", command=self.cf)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
@@ -27,17 +36,17 @@ class TSP_SOLVER2():
         self.show_menu.add_command(label='Instance Plot', command=self.instanceplot)
         self.menu.add_cascade(label='Show', menu=self.show_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
-        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=self.aboutmenu)
+        self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=aboutmenu)
         self.menu.add_cascade(label="About", menu=self.about_menu)
         self.help_menu = Menu(self.menu, tearoff=0)
-        self.help_menu.add_command(label="Help", accelerator='Ctrl+F1', command=self.helpmenu)
+        self.help_menu.add_command(label="Help", accelerator='Ctrl+F1', command=helpmenu)
         self.menu.add_cascade(label="Help", menu=self.help_menu)
         self.master.config(menu=self.menu)
         self.master.bind('<Control-o>', lambda event: self.insertfile())
         self.master.bind('<Alt-F5>', lambda event: self.solve())
         self.master.bind('<Alt-F4>', lambda event: self.exitmenu())
-        self.master.bind('<Control-F1>', lambda event: self.helpmenu())
-        self.master.bind('<Control-i>', lambda event: self.aboutmenu())
+        self.master.bind('<Control-F1>', lambda event: helpmenu())
+        self.master.bind('<Control-i>', lambda event: aboutmenu())
         self.master.bind('<Control-F5>', lambda event: self.cf())
         self.binsert = Button(self.master, text="Insert a file", command=self.insertfile)
         self.binsert.pack()
@@ -51,6 +60,7 @@ class TSP_SOLVER2():
         self.textt = Text(self.master, height=1)
         self.textt.pack()
     def exitmenu(self):
+        """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
     def instanceplot(self):
@@ -73,6 +83,7 @@ class TSP_SOLVER2():
             self.solvb.forget()
             msg.showinfo("FILE CLOSED", "SUCCESS") #CHANGE THE MESSAGE 
     def file_verification_gui(self):
+        """ gui created after file verification"""
         self.nodelist = list(self.number)
         self.varnumnode = StringVar(self.master)
         self.varnumnode.set(self.nodelist[0])
@@ -102,10 +113,6 @@ class TSP_SOLVER2():
             self.checkinsertedfiletype()
         else:
             msg.showerror("ERROR", "YOU NEED TO CLOSE THE FILE")
-    def helpmenu(self):
-        msg.showinfo("Help", "A TSP SOLVER")
-    def aboutmenu(self):
-        msg.showinfo("About", "Version 1.0")
     def algouse(self, tries, visited_nodes, totalscore):
         if self.varnumset.get() == "2-opt":
             current_route, current_score = _2optf(visited_nodes, totalscore, tries, self.table, self.number)
