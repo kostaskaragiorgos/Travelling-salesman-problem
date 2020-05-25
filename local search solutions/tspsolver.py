@@ -31,7 +31,6 @@ class TspSolver():
         self.file_menu.add_command(label="Close file", accelerator="Ctrl+F5", command=self.cf)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
-        
         self.show_menu = Menu(self.menu, tearoff=0)
         self.show_menu.add_command(label='Instance Plot', command=self.instanceplot)
         self.menu.add_cascade(label='Show', menu=self.show_menu)
@@ -39,11 +38,9 @@ class TspSolver():
         self.about_menu = Menu(self.menu, tearoff=0)
         self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=aboutmenu)
         self.menu.add_cascade(label="About", menu=self.about_menu)
-        
         self.help_menu = Menu(self.menu, tearoff=0)
         self.help_menu.add_command(label="Help", accelerator='Ctrl+F1', command=helpmenu)
         self.menu.add_cascade(label="Help", menu=self.help_menu)
-        
         self.master.config(menu=self.menu)
         self.master.bind('<Control-o>', lambda event: self.insertfile())
         self.master.bind('<Alt-F5>', lambda event: self.solve())
@@ -51,7 +48,6 @@ class TspSolver():
         self.master.bind('<Control-F5>', lambda event: self.cf())
         self.master.bind('<Control-F1>', lambda event: helpmenu())
         self.master.bind('<Control-i>', lambda event: aboutmenu())
-        
         self.binsert = Button(self.master, text="Insert a file", command=self.insertfile)
         self.binsert.pack()
 
@@ -79,7 +75,6 @@ class TspSolver():
         """ exit """
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
-    
     def file_verification_gui(self):
         """ inserted gui after verification """
         nodelist = list(self.number)
@@ -113,23 +108,19 @@ class TspSolver():
             self.file_verification()
         else:
             msg.showerror("ERROR", "YOU NEED TO CLOSE THE FILE")
-                
-
     def solve(self):
         """ solves the problem """
         if self.filed == "":
             msg.showinfo("Import", "You need to import a .txt file")
         else:
-            visited_nodes, totalscore = nearserN(self.table, self.number, self.varnumnode.get()) 
+            visited_nodes, totalscore = nearserN(self.table, self.number, self.varnumnode.get())
             msg.showinfo("SUCCESS",
                          "THE ROUTE USING NEAREST NEIGHBOR"
                          +str(visited_nodes)+"with score:"+str(totalscore))
-    
 def main():
     """ main function """
     root = Tk()
     TspSolver(root)
     root.mainloop()
-    
 if __name__ == '__main__':
     main()
