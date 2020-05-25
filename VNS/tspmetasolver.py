@@ -5,8 +5,6 @@ from nearestneighbor import *
 from _2_opt import partial_reverse, _2optf
 from basicvn import bvns
 from relocate import *
-import pandas as pd 
-import numpy as np
 def helpmenu():
     """ help menu"""
     msg.showinfo("Help", "A TSP SOLVER")
@@ -14,6 +12,7 @@ def aboutmenu():
     """ about menu"""
     msg.showinfo("About", "Version 1.0")
 class TSP_META_SOLVER():
+    """ tsp meta solver """
     def __init__(self, master):
         self.master = master
         self.master.title("TSP_META_SOLVER")
@@ -27,10 +26,10 @@ class TSP_META_SOLVER():
         self.file_menu.add_command(label="Close file", accelerator="Ctrl+F5", command=self.cf)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
-        self.about_menu=Menu(self.menu, tearoff=0)
+        self.about_menu = Menu(self.menu, tearoff=0)
         self.about_menu.add_command(label="About", accelerator='Ctrl+I', command=aboutmenu)
         self.menu.add_cascade(label="About", menu=self.about_menu)
-        self.help_menu=Menu(self.menu, tearoff=0)
+        self.help_menu = Menu(self.menu, tearoff=0)
         self.help_menu.add_command(label="Help", accelerator='Ctrl+F1', command=helpmenu)
         self.menu.add_cascade(label="Help", menu=self.help_menu)
         self.master.config(menu=self.menu)
@@ -49,7 +48,7 @@ class TSP_META_SOLVER():
     def cf(self):
         """ close file"""
         if self.filed == "":
-            msg.showerror("ERROR","NO FILE IMPORTED TO CLOSE")
+            msg.showerror("ERROR", "NO FILE IMPORTED TO CLOSE")
         else:
             self.filed = ""
             self.popupsetmenu.forget()
@@ -63,7 +62,8 @@ class TSP_META_SOLVER():
         """ insert file function """
         if self.filed == "":
             self.filed = filedialog.askopenfilename(initialdir="/", title="Select txt file",
-                                                   filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
+                                                    filetypes=(("txt files", "*.txt"),
+                                                               ("all files", "*.*")))
             if ".txt" in self.filed:
                 self.table, self.number = fileparser(self.filed)
                 nodelist = list(self.number)
@@ -79,21 +79,21 @@ class TSP_META_SOLVER():
             msg.showerror("ERROR", "YOU NEED TO CLOSE THE FILE")
     def solve(self):
         """ solve Button function """
-        if self.filed  == "":
+        if self.filed == "":
             msg.showinfo("Import", "You need to import a .txt file")
         else:
             visited_nodes, totalscore = nearserN(self.table, self.number, self.varnumnode.get()) 
             try:
                 if int(self.textt.get(1.0, END)) > 0:
                     tries = int(self.textt.get(1.0, END))
-                    lista  = [relocatef(visited_nodes, totalscore, tries, self.table, self.number), _2optf(visited_nodes, totalscore, tries, self.table, self.number)]
+                    lista = [relocatef(visited_nodes, totalscore, tries, self.table, self.number), _2optf(visited_nodes, totalscore, tries, self.table, self.number)]
                     new_route, new_score = bvns(visited_nodes, totalscore, lista, tries)
                     msg.showinfo("Total Score", "Route:"+str(new_route)+ "Score:"+str(new_score))
                     self.textt.delete(1.0, END)
                 else:
                     msg.showerror("Value Error", "Enter a number higher than zero")
                     self.textt.delete(1.0, END)
-            except:
+            except ValueError:
                 msg.showerror("Value Error", "Enter a number higher than zero")
                 self.textt.delete(1.0, END)
 def main():
