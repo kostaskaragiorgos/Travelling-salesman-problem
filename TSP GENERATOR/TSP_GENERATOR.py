@@ -9,18 +9,32 @@ import random as rd
 import  numpy as np
 def helpmenu():
     """ help menu function """
-    msg.showinfo("HELP", "ENTER THE NUMBER OF NODES PICK ONE OF THE WAYS TO CREATE THE NODES AND PRESS GENERATE")
+    msg.showinfo("HELP",
+                 "ENTER THE NUMBER OF NODES PICK ONE OF THE WAYS TO CREATE THE NODES"+
+                 "AND PRESS GENERATE")
 def aboutmenu():
     """ about menu function """
     msg.showinfo("About", "Version 1.0")
 def values_bounds(self):
     """ user sets the range of distance """
-    self.startingvalue = simpledialog.askinteger("Min Distance", "Enter the value of the min possible distance", parent=self.master, minvalue=1)
+    self.startingvalue = simpledialog.askinteger("Min Distance",
+                                                 "Enter the value of the min possible distance",
+                                                 parent=self.master,
+                                                 minvalue=1)
     while self.startingvalue is None:
-        self.startingvalue = simpledialog.askinteger("Min Distance", "Enter the value of the min possible distance", parent=self.master, minvalue=1)
-    self.endingvalue = simpledialog.askinteger("Max Distance", "Enter the max possible distance", parent=self.master, minvalue=self.startingvalue+1)
+        self.startingvalue = simpledialog.askinteger("Min Distance",
+                                                     "Enter the value of the min possible distance",
+                                                     parent=self.master,
+                                                     minvalue=1)
+    self.endingvalue = simpledialog.askinteger("Max Distance",
+                                               "Enter the max possible distance",
+                                               parent=self.master,
+                                               minvalue=self.startingvalue+1)
     while self.endingvalue is None:
-        self.endingvalue = simpledialog.askinteger("Max Distance", "Enter the max possible distance", parent=self.master, minvalue=self.startingvalue+1)
+        self.endingvalue = simpledialog.askinteger("Max Distance",
+                                                   "Enter the max possible distance",
+                                                   parent=self.master,
+                                                   minvalue=self.startingvalue+1)
     return self.startingvalue, self.endingvalue
 def asymmetric_table(self):
     """ creaton of asymmetric table """
@@ -54,9 +68,12 @@ def symmetric_table(self):
     return a
 def save_file(a):
     """ saves .txt file """
-    filenamesave = filedialog.asksaveasfilename(initialdir="/", title="Select file", filetypes=(("txt files", "*.txt"), ("all files", "*.*")))
+    filenamesave = filedialog.asksaveasfilename(initialdir="/",
+                                                title="Select file",
+                                                filetypes=(("txt files", "*.txt"),
+                                                           ("all files", "*.*")))
     if ".txt" in filenamesave:
-        np.savetxt(filenamesave, a, fmt ='%1d', delimiter=' ')
+        np.savetxt(filenamesave, a, fmt='%1d', delimiter=' ')
         msg.showinfo("Success", "Success")
     else:
         msg.showerror("Abort", "Abort")
@@ -84,7 +101,7 @@ class TSP_GENERATOR():
         #menu
         self.menu = Menu(self.master)
         self.file_menu = Menu(self.menu, tearoff=0)
-        self.file_menu.add_command(label="Generate", accelerator='Ctrl+O',command=self.gen)
+        self.file_menu.add_command(label="Generate", accelerator='Ctrl+O', command=self.gen)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
         self.menu.add_cascade(label="File", menu=self.file_menu)
         self.about_menu = Menu(self.menu, tearoff=0)
@@ -98,7 +115,7 @@ class TSP_GENERATOR():
         self.master.bind('<Control-o>', lambda event: self.gen())
         self.master.bind('<Control-F1>', lambda event: helpmenu())
         self.master.bind('<Control-i>', lambda event: aboutmenu())
-        self.master.bind('<Control-o>', lambda  event: self.gen()) 
+        self.master.bind('<Control-o>', lambda  event: self.gen())
     def exitmenu(self):
         """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
@@ -117,7 +134,7 @@ class TSP_GENERATOR():
                 msg.showerror("Value Error", "Enter a number higher than four")
         except ValueError:
             msg.showerror("Value Error", "Enter a number higher than four")
-            self.text.delete(1.0, END)    
+            self.text.delete(1.0, END)
 def main():
     """ main function"""
     root = Tk()
