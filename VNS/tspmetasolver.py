@@ -67,14 +67,18 @@ class TSP_META_SOLVER():
                                                     filetypes=(("txt files", "*.txt"),
                                                                ("all files", "*.*")))
             if ".txt" in self.filed:
-                self.table, self.number = fileparser(self.filed)
-                nodelist = list(self.number)
-                self.varnumnode = StringVar(self.master)
-                self.varnumnode.set(nodelist[0])
-                self.popupsetmenu = OptionMenu(self.master, self.varnumnode, *nodelist)
-                self.popupsetmenu.pack()
-                self.solvb = Button(self.master, text="Solve", command=self.solve)
-                self.solvb.pack()
+                try:
+                    self.table, self.number = fileparser(self.filed)
+                    nodelist = list(self.number)
+                    self.varnumnode = StringVar(self.master)
+                    self.varnumnode.set(nodelist[0])
+                    self.popupsetmenu = OptionMenu(self.master, self.varnumnode, *nodelist)
+                    self.popupsetmenu.pack()
+                    self.solvb = Button(self.master, text="Solve", command=self.solve)
+                    self.solvb.pack()
+                except ValueError:
+                    self.filed = ""
+                    msg.showerror("ERROR", "NO TSP INSTANCE")
             else:
                 msg.showerror("Error", "NO TXT FILE ADDED")
         else:
