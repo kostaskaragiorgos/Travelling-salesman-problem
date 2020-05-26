@@ -1,10 +1,11 @@
+""" solving tsp using vns"""
 from tkinter import Tk, Menu, Button, Label, Text, OptionMenu, StringVar, END
 from tkinter import messagebox as msg
 from tkinter import filedialog
-from nearestneighbor import *
-from _2_opt import partial_reverse, _2optf
+from nearestneighbor import fileparser, nearserN
+from _2_opt import  _2optf
 from basicvn import bvns
-from relocate import *
+from relocate import relocatef
 def helpmenu():
     """ help menu"""
     msg.showinfo("Help", "A TSP SOLVER")
@@ -21,7 +22,8 @@ class TSP_META_SOLVER():
         self.filed = ""
         self.menu = Menu(self.master)
         self.file_menu = Menu(self.menu, tearoff=0)
-        self.file_menu.add_command(label="Insert a file", accelerator='Ctrl+O', command=self.insertfile)
+        self.file_menu.add_command(label="Insert a file",
+                                   accelerator='Ctrl+O', command=self.insertfile)
         self.file_menu.add_command(label="Solve", accelerator='Alt+F5', command=self.solve)
         self.file_menu.add_command(label="Close file", accelerator="Ctrl+F5", command=self.cf)
         self.file_menu.add_command(label="Exit", accelerator='Alt+F4', command=self.exitmenu)
@@ -86,7 +88,15 @@ class TSP_META_SOLVER():
             try:
                 if int(self.textt.get(1.0, END)) > 0:
                     tries = int(self.textt.get(1.0, END))
-                    lista = [relocatef(visited_nodes, totalscore, tries, self.table, self.number), _2optf(visited_nodes, totalscore, tries, self.table, self.number)]
+                    lista = [relocatef(visited_nodes,
+                                       totalscore,
+                                       tries, self.table,
+                                       self.number),
+                             _2optf(visited_nodes,
+                                    totalscore,
+                                    tries,
+                                    self.table,
+                                    self.number)]
                     new_route, new_score = bvns(visited_nodes, totalscore, lista, tries)
                     msg.showinfo("Total Score", "Route:"+str(new_route)+ "Score:"+str(new_score))
                     self.textt.delete(1.0, END)
