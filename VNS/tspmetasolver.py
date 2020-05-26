@@ -60,27 +60,33 @@ class TSP_META_SOLVER():
         """ exit menu function """
         if msg.askokcancel("Quit?", "Really quit?"):
             self.master.destroy()
+    def file_verification_gui(self):
+        nodelist = list(self.number)
+        self.varnumnode = StringVar(self.master)
+        self.varnumnode.set(nodelist[0])
+        self.popupsetmenu = OptionMenu(self.master, self.varnumnode, *nodelist)
+        self.popupsetmenu.pack()
+        self.solvb = Button(self.master, text="Solve", command=self.solve)
+        self.solvb.pack()
+    def instance_verification(self):
+        try:
+            self.table, self.number = fileparser(self.filed)
+            self.file_verification_gui()
+        except ValueError:
+            self.filed = ""
+            msg.showerror("ERROR", "NO TSP INSTANCE")
+    def txt_file_verification(self):
+        if ".txt" in self.filed:
+            self.instance_verification()
+        else:
+            msg.showerror("Error", "NO TXT FILE ADDED")
     def insertfile(self):
         """ insert file function """
         if self.filed == "":
             self.filed = filedialog.askopenfilename(initialdir="/", title="Select txt file",
                                                     filetypes=(("txt files", "*.txt"),
                                                                ("all files", "*.*")))
-            if ".txt" in self.filed:
-                try:
-                    self.table, self.number = fileparser(self.filed)
-                    nodelist = list(self.number)
-                    self.varnumnode = StringVar(self.master)
-                    self.varnumnode.set(nodelist[0])
-                    self.popupsetmenu = OptionMenu(self.master, self.varnumnode, *nodelist)
-                    self.popupsetmenu.pack()
-                    self.solvb = Button(self.master, text="Solve", command=self.solve)
-                    self.solvb.pack()
-                except ValueError:
-                    self.filed = ""
-                    msg.showerror("ERROR", "NO TSP INSTANCE")
-            else:
-                msg.showerror("Error", "NO TXT FILE ADDED")
+            self.txt_file_verification()
         else:
             msg.showerror("ERROR", "YOU NEED TO CLOSE THE FILE")
     def solve(self):
