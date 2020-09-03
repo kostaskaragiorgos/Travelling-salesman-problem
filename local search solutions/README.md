@@ -90,7 +90,7 @@ pip install -r requirements.txt
 
 ### TSP_SOLVER_Radon_raw
 
-<p><img src ="images/tsp solver/radon/tspsolver radon raw.png" title = "TSP Solver Radon mi"/></p>
+<p><img src ="images/tsp solver/radon/tspsolver radon raw.png" title = "TSP Solver Radon raw"/></p>
 
 # TSP_SOLVER_2
 
@@ -125,7 +125,7 @@ pip install -r requirements.txt
 
 ### TSP_SOLVER_2_Radon_raw
 
-<p><img src ="images/tsp solver 2/radon/tsp solver 2 radon raw.png" title = "TSP Solver Radon mi"/></p>
+<p><img src ="images/tsp solver 2/radon/tsp solver 2 radon raw.png" title = "TSP Solver Radon raw"/></p>
 
 ## License
 [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
