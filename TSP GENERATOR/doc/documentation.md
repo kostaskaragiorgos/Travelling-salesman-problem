@@ -12,7 +12,7 @@ but first you need to enter the number of nodes  to main's section text box and 
 
 <p><img src ="doc images/File menu/main.png" title= "Main"/> </p>
 
-if you enter a number of nodes lower than 4 or no number at all a error window pops up
+if you enter a number of nodes lower than 4 or no number at all an error window pops up
 
 <p><img src="doc images/File menu/value error.png" title="Input Number Error"/></p>
 
