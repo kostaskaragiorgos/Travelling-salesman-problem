@@ -1,18 +1,21 @@
 # Travelling-salesman-problem
 
 ## Definition
-Given a list of nodes you need to find the best way to visit every node only once and return to the starting point with the lowest possible cost
 
+<p>Given a list of nodes you need to find the best way to visit every node only once and return to the starting point with the lowest possible cost<p>
 
 ## test instances
 
-Contains symetric and asymetric tsp instances.
+<p>Contains symetric and asymetric tsp instances.</p>
 
 ## TSP GENERATOR
 
-Contains a .py gui app and you can create tsp instances by using it.
+<p>Contains a .py gui app and you can create tsp instances by using it.<p>
 
-# VNS(Variable neighborhood search)
+## VNS(Variable neighborhood search)
 
-An approach to solve tsp problems by using the vns metaheuristic method.
+<p>An approach to solve tsp problems by using the vns metaheuristic method.<p>
 
+## local search solutions
+
+<p>Solving tsp instances by using simple local search algorithms.<p>
